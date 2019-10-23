@@ -1,0 +1,8 @@
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <rect class="svg-stroke" x="4.5" y="2.5" width="1" height="19" stroke="black"/>
+  <rect class="svg-stroke" x="2.75" y="6.75" width="4.5" height="4.5" fill="white" stroke="black" stroke-width="1.5"/>
+  <rect class="svg-stroke" x="18.5" y="2.5" width="1" height="19" stroke="black"/>
+  <rect class="svg-stroke" x="16.75" y="6.75" width="4.5" height="4.5" fill="white" stroke="black" stroke-width="1.5"/>
+  <rect class="svg-stroke" x="11.5" y="2.5" width="1" height="19" stroke="black"/>
+  <rect class="svg-stroke" x="9.75" y="12.75" width="4.5" height="4.5" fill="white" stroke="black" stroke-width="1.5"/>
+</svg>

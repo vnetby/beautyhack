@@ -1,0 +1,4 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path class="svg-stroke" d="M6 6V3H19V20H6V17" stroke="black" stroke-width="2" id="exitOutline"/>
+  <path class="svg-fill" fill-rule="evenodd" clip-rule="evenodd" d="M15.3476 10.8072L12.0776 7L10.72 8.4417L12.4748 10.4848L5 10.5V12.5194H12.4972L10.72 14.5583L12.0777 16L16 11.5L15.3476 10.8072Z" fill="black"/>
+</svg>

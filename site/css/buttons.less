@@ -1,0 +1,128 @@
+.like-btn {
+  width: 100%;
+  max-width: 354px;
+  margin-left: auto;
+  margin-right: auto;
+  @media ( max-width: @media_tablet ) {
+    max-width: none;
+    width: 52.2%;
+    min-width: 340px;
+  }
+
+  @media ( max-width: @media_mobile ) {
+    max-width: none;
+    min-width: auto;
+    width: 100%;
+  }
+}
+
+
+.btn, a.btn {
+  border: none;
+  background-color: transparent;
+  transition: .3s;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 0;
+  padding: 1em;
+  font-weight: bold;
+
+  &:extend( .like-btn );
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  &.red {
+    border: 1px solid transparent;
+    background-color: @c-1;
+    color: #fff;
+
+    &:hover, &.active, &.current {
+      background-color: #fff;
+      color: @c-1;
+      border-color: @c-1;
+    }
+  }
+
+
+  &.border-black {
+    background-color: transparent;
+    color: #000;
+    border: 2px solid #000;
+  }
+
+
+  &.black {
+    background-color: #000;
+    color: #fff;
+    &:hover, &.active, &.current {
+      // background-color: @c-5;
+      background-color: #424242;
+      color: #fff;
+    }
+  }
+
+
+  &.red {
+    background-color: @c-1;
+    color: #fff;
+
+    &:hover, &.active, &.current {
+      background-color: @c-12;
+      color: #fff;
+    }
+  }
+
+  &.white {
+    background-color: #fff;
+    color: #000;
+    &:hover, &.active, &.current {
+      background-color: #000;
+      color: #fff;
+    }
+  }
+
+
+  &.btn-vk {
+    background-color: @c-9;
+    color: @c-3;
+    path {
+      fill: @c-3;
+    }
+
+    &:hover, &.active, &.current {
+      background-color: @social-vk;
+      color: #fff;
+      path {
+        fill: #fff;
+      }
+    }
+  }
+
+  &.btn-fb {
+    background-color: @c-9;
+    color: @c-3;
+    path {
+      fill: @c-3;
+    }
+    &:hover, &.active, &.current {
+      background-color: @social-fb;
+      color: #fff;
+      path {
+        fill: #fff;
+      }
+    }
+  }
+
+
+  &.light {
+    background-color: @c-8;
+    color: @c-3;
+
+    &:hover, &.active, &.current {
+      background-color: @c-5;
+      color: #000;
+    }
+  }
+}

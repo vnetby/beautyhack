@@ -1,0 +1,6 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g>
+    <rect class="svg-fill" x="11" y="7" width="2" height="10" fill="#000"/>
+    <rect class="svg-fill" x="17" y="11" width="2" height="10" transform="rotate(90 17 11)" fill="#000"/>
+  </g>
+</svg>

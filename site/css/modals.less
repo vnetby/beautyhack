@@ -1,0 +1,273 @@
+.login-modal {
+
+
+  @media ( max-width: @media_mobile ) {
+    background-color: #fff;
+  }
+
+  @media ( max-width: @media_mobile ) {
+    width: 100%;
+    height: 100%;
+    padding: 0!important;
+
+    .nav-slider-item-content, .nav-slider-item, .nav-slider-track, .nav-slider {
+      height: 100%;
+    }
+
+    .nav-slider-item-content {
+      overflow: auto;
+    }
+  }
+
+  .form-text {
+    text-align:center;
+    margin-bottom: 30px;
+  }
+
+  .btn {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span {
+      // line-height: 0;
+      display: block;
+      padding-top: .2em;
+    }
+    span.ico {
+      display: flex;
+      padding-top: 0;
+    }
+  }
+
+
+
+  padding: 0;
+  background-color: transparent;
+  .nav-slider-item-content {
+    position: relative;
+    background-color: #fff;
+    padding-top: 60px;
+    padding-left: 101px;
+    padding-right: 101px;
+    padding-bottom: 40px;
+
+    @media ( max-width: @media_mobile ) {
+      padding-top: 74px;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-bottom: 40px;
+    }
+  }
+
+}
+
+
+
+.fancybox-button--close {
+  display: none!important;
+}
+.dismiss-modal {
+  cursor: pointer;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  @media( max-width: @media_mobile ) {
+    right: 20px;
+  }
+}
+
+
+.form-buttons {
+  max-width: 354px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+
+  .btn {
+    max-width: none;
+    min-width: auto;
+    margin: 0;
+    width: 100%!important;
+  }
+  .submit-btn {
+    margin-bottom: 30px;
+    @media ( max-width: @media_tablet ) {
+      margin-bottom: 20px;
+    }
+  }
+
+  .social-login {
+    display: flex;
+    margin-left: -10px;
+    margin-right: -10px;
+    .btn-wrap {
+      width: 50%;
+      padding: 10px;
+      padding-top: 0;
+    }
+  }
+}
+
+
+
+
+
+.subscribe-modal {
+
+
+  .fancy-body {
+    margin-bottom: 0;
+  }
+  padding-bottom: 60px;
+
+  @media ( max-width: @media_mobile ) {
+    .subscribe-form {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    padding-top: 74px;
+    padding-bottom: 40px;
+  }
+
+
+  .confirm-regulations-check {
+    display: flex;
+
+    .pretty {
+      white-space: normal;
+    }
+
+    label {
+      position: relative;
+    }
+
+    .label {
+      white-space: normal;
+      padding-left: 10px;
+      line-height: 2.2;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+.fancy-modal {
+  display: none;
+  width: 100%;
+  max-width: 565px;
+  padding-top: 60px;
+  @media ( max-width: @media_mobile) {
+    padding-top: 74px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+    width: 100%;
+    height: 100%;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+  }
+}
+
+
+
+
+
+.fancybox-bg {
+  background-color: #000;
+  opacity: 0;
+}
+.fancybox-is-open .fancybox-bg {
+  opacity: .3;
+}
+
+.alert-modal {
+  @media ( min-width: @media_mobile ) {
+    padding: 94px 60px;
+  }
+  @media ( max-width: @media_tablet ) and ( min-width: @media_mobile ) {
+    padding: 196px 71px;
+    .fancy-title {
+      margin-bottom: 15px;
+    }
+  }
+  @media ( max-width: @media_mobile ) {
+    .fancy-title {
+      font-weight: normal;
+      margin-bottom: 20px;
+    }
+    .fancy-sub-title {
+      font-size: 15px;
+    }
+  }
+}
+
+.fancybox-slide--html {
+  @media ( max-width: @media_mobile ) {
+    padding: 0;
+  }
+}
+
+
+
+.fancybox-slide--html .fancybox-close-small {
+  padding: 0;
+  width: 27px;
+  height: 27px;
+  display: block;
+  position: absolute;
+  top: 27px;
+  right: 27px;
+}
+
+.fancy-title {
+  font-size: 36px;
+  line-height: 1.3;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  @media ( max-width: @media_mobile) {
+    font-size: 32px;
+    text-align: left;
+  }
+}
+
+.fancy-sub-title {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.8;
+  color: @c-3;
+  @media ( max-width: @media_mobile) {
+    text-align: left;
+  }
+}
+
+.fancy-head {
+  margin-bottom: 40px;
+}
+
+.fancy-body {
+  margin-bottom: 60px;
+}
+
+.fancy-foot {
+  text-align: center;
+  color: @c-4;
+  font-size: 13px;
+  a {
+    color: @c-1;
+    &:hover {
+      color: @c-4;
+    }
+  }
+}

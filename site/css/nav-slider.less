@@ -1,0 +1,33 @@
+.nav-slider {
+  width: 100%;
+  overflow: hidden;
+  .nav-slider-track {
+    display: flex;
+    align-items: stretch;
+    transition: @transition;
+    & > * {
+      width: 100%;
+      flex-shrink: 0;
+      flex-grow: 0;
+      opacity: 0;
+      transition: @transition;
+      &.current {
+        opacity: 1;
+      }
+    }
+  }
+
+  .nav-slider-item {
+    position: relative;
+    .nav-slider-reset {
+      cursor: pointer;
+      position: absolute;
+      top: 30px;
+      left: 30px;
+
+      @media( max-width: @media_mobile ) {
+        left: 20px;
+      }
+    }
+  }
+}
