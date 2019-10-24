@@ -30,13 +30,17 @@
             </button>
           </div>
         </div>
-        <div class="save-bookmark grey">
-          <a href="/_request.php?action=save_bookmark" data-page="<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>" class="save-bookmark-link">
-            <span class="ico">
-              <?= $svg->get_ico('bookmarks_border'); ?>
-            </span>
-            <span>Сохранить в закладки</span>
-          </a>
+        <div class="save-bookmark">
+          <label class="bookmark-btn">
+            <input type="checkbox" class="save-bookmark-input" name="saveBookmarkInput" id="saveBookmarkInputFoot" data-has-label="Удалить из закладок" data-add-label="Сохранить в закладки" data-page="PAGE_INDEX" data-ajax="/_request.php?action=save_bookmark">
+            <div class="bookmark-ico has">
+              <?= $svg->get_ico('bookmark_add'); ?>
+            </div>
+            <div class="bookmark-ico add">
+              <?= $svg->get_ico('bookmark_2_add'); ?>
+            </div>
+          </label>
+          <label for="saveBookmarkInputFoot" class="label grey">Сохранить в закладки</label>
         </div>
       </div>
     </div>
@@ -68,5 +72,18 @@
       </div>
     </div>
   </div>
-  
+
+
+
+
 </div>
+
+<!-- <label class="bookmark-btn">
+  <input type="checkbox" class="save-bookmark-input" name="saveBookmarkInput" id="saveBookmarkInputFoot" data-has-label="Удалить из закладок" data-add-label="Сохранить в закладки" data-page="PAGE_INDEX" data-ajax="/_request.php?action=save_bookmark">
+  <div class="bookmark-ico has">
+    <?= $svg->get_ico('bookmark_add'); ?>
+  </div>
+  <div class="bookmark-ico add">
+    <?= $svg->get_ico('bookmark_2_add'); ?>
+  </div>
+</label> -->

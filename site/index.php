@@ -50,7 +50,7 @@ if (!isset($_GET['page'])) {
   if ( $page === 'home.php' ) {
     require( 'template-parts/brand_site_background.php' );
   }
-   ?>
+  ?>
   <div class="main" id="main">
     <?php
 

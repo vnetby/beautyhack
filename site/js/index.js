@@ -14,8 +14,6 @@ window.BH.headerBreakpoint      = 'tablet';
 $.fancybox.defaults.smallBtn = false;
 $.fancybox.defaults.touch    = false;
 
-console.log( $.fancybox.defaults.afterLoad );
-
 import { objectFit } from './ie_fix.js';
 
 import { addBrowserClass } from './browserDetect.js';

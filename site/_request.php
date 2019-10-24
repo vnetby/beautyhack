@@ -111,6 +111,15 @@ if( isset ( $_GET['action']) ) {
 
   if ( $_GET['action'] === 'save_bookmark' ) {
     $page = $_POST['page'];
+
+    $save = $_POST['save'];
+
+    if ( $save === 'true' ) {
+      // SAVE BOOKMARK
+    } else {
+      // REMOVE FROM BOOKMARKS
+    }
+
     exit;
   }
 
