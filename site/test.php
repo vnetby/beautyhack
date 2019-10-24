@@ -19,11 +19,13 @@
 
       <div class="row clearfix center-row">
 
-        <div class="col-lg-12 banner sm-mobile">
-          <a href="#" class="dashed-shadow sm-large-content">
-            <span class="shadow"></span>
-            <div class="ajax-image" data-lg="<?= URL; ?>img/banners/adv_3.jpg" data-sm="<?= URL; ?>img/banners/adv_3-sm.jpg" data-alt="как я две недели тестировала Achronim"></div>
-          </a>
+        <div class="col-lg-12 display-mobile">
+          <div class="banner">
+            <a href="#" class="dashed-shadow">
+              <span class="shadow"></span>
+              <div class="ajax-image" data-sm="<?= URL; ?>/img/true_banners/banner_300_250.jpg"></div>
+            </a>
+          </div>
         </div>
 
         <div class="col-lg-12">
@@ -32,10 +34,10 @@
           </p>
         </div>
 
-        <div class="col-lg-12 sm-mobile">
-          <div class="card sm-full-content banner ">
-            <a href="#" class="thumb hover-overlay">
-              <div class="ajax-image" data-lg="<?= URL; ?>img/banners/adv_1.jpg" data-sm="<?= URL; ?>img/banners/adv_1-sm.jpg" data-alt="как я две недели тестировала Achronim"></div>
+        <div class="col-lg-12 display-mobile">
+          <div class="banner">
+            <a href="#" class="display-mobile">
+              <div class="ajax-image" data-sm="<?= URL; ?>/img/true_banners/banner_320_250.jpg"></div>
             </a>
           </div>
         </div>

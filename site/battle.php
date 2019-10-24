@@ -20,8 +20,15 @@
 
     <div class="row clearfix p-left">
       <div class="col-lg-12">
-        <div class="shadow-both right image sm-full-content">
-          <div class="ajax-image" data-lg="<?= URL; ?>img/banners/adv_1.jpg"  data-sm="<?= URL; ?>img/banners/adv_1-sm.jpg" data-alt="как я две недели тестировала Achronim"></div>
+        <div class="banner right">
+          <div class="shadow-both display-desktop display-tablet">
+            <a href="#" class="thumb mb-0 hover-overlay">
+              <div class="ajax-image" data-lg="<?= URL; ?>img/true_banners/banner_300_600.jpg" data-alt="HM banner"></div>
+            </a>
+          </div>
+          <a href="#" class="display-mobile">
+            <div class="ajax-image" data-sm="<?= URL; ?>/img/true_banners/banner_320_250.jpg"></div>
+          </a>
         </div>
         <h3 class="art-title-lg">Какой оттенок блонда Гвинет Пэлтроу вам нравится больше?</h3>
         <p>

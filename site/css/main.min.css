@@ -626,7 +626,6 @@ svg .svg-stroke {
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
-  overflow: hidden;
   min-height: 100vh;
   position: relative;
   z-index: 1;
@@ -641,9 +640,10 @@ svg .svg-stroke {
     padding-bottom: 40px;
   }
 }
-@media (max-width: 992px) {
+@media (max-width: 576px) {
   .main-content {
     padding-bottom: 10px;
+    padding-top: 30px;
   }
 }
 .input {
@@ -1203,42 +1203,68 @@ svg .svg-stroke {
 }
 .tabs-nav-container {
   margin-bottom: 40px;
-  border-bottom: 0.5px solid #C9C9C9;
-  border-top: 0.5px solid #C9C9C9;
+  margin-left: 0;
+  margin-right: 0;
 }
-@media (max-width: 576px) {
-  .tabs-nav-container {
-    margin-left: -20px;
-    margin-right: -20px;
-  }
+.tabs-nav-container > * {
+  padding-left: 0;
+  padding-right: 0;
 }
 .tabs-nav {
+  border-bottom: 0.5px solid #C9C9C9;
+  border-top: 0.5px solid #C9C9C9;
+  padding: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-left: -20px;
-  margin-right: -20px;
   max-width: none;
 }
-.tabs-nav > * {
-  width: 100%;
+@media (max-width: 992px) {
+  .tabs-nav {
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 @media (max-width: 576px) {
   .tabs-nav {
-    padding-left: 20px;
-    padding-right: 20px;
+    margin-left: -10px;
+    margin-right: -10px;
   }
+}
+.tabs-nav > * {
+  width: 100%;
 }
 .tabs-nav .tabs-nav-item {
   padding: 0 20px;
 }
 @media (max-width: 576px) {
   .tabs-nav .tabs-nav-item {
-    padding: 0 15px;
+    padding: 0 10px;
+  }
+}
+@media (min-width: 992px) {
+  .tabs-nav .tabs-nav-item:first-child {
+    padding-left: 0;
+  }
+  .tabs-nav .tabs-nav-item:last-child {
+    padding-right: 0;
   }
 }
 .tabs-nav .tabs-nav-item .tabs-nav-link {
   position: relative;
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  padding: 15px 0;
+}
+@media (max-width: 576px) {
+  .tabs-nav .tabs-nav-item .tabs-nav-link {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 .tabs-nav .tabs-nav-item .tabs-nav-link:after,
 .tabs-nav .tabs-nav-item .tabs-nav-link:before {
@@ -1274,13 +1300,6 @@ svg .svg-stroke {
 .tabs-nav .tabs-nav-item.active .tabs-nav-link:before {
   left: 0;
   opacity: 1;
-}
-.tabs-nav .tabs-nav-item a {
-  display: block;
-  width: 100%;
-  text-align: center;
-  padding: 15px;
-  font-size: 20px;
 }
 .tab-item {
   display: none;
@@ -1569,11 +1588,12 @@ svg .svg-stroke {
 }
 @media (max-width: 992px) {
   .art-full-slider-nav .slider-nav .slick-item {
-    margin-bottom: 0;
+    margin-bottom: 10px;
   }
 }
 @media (max-width: 576px) {
   .art-full-slider-nav .slider-nav .slick-item {
+    margin-bottom: 0;
     padding: 0 10px;
   }
 }
@@ -1621,10 +1641,10 @@ svg .svg-stroke {
 }
 @media (max-width: 992px) {
   .over-container {
-    -webkit-transform: translateX(-32px);
-        -ms-transform: translateX(-32px);
-            transform: translateX(-32px);
-    width: calc(100% + 64px);
+    -webkit-transform: translateX(-30px);
+        -ms-transform: translateX(-30px);
+            transform: translateX(-30px);
+    width: calc(100% + 60px);
   }
 }
 @media (max-width: 576px) {
@@ -1667,6 +1687,9 @@ svg .svg-stroke {
   position: relative;
   line-height: 2;
   font-size: 16px;
+}
+.article .banner {
+  width: auto;
 }
 .article h1,
 .article h2,
@@ -3295,7 +3318,6 @@ a.btn {
   .like-btn,
   .btn,
   a.btn {
-    max-width: none;
     width: 52.2%;
     min-width: 340px;
   }

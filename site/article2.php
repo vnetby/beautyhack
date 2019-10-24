@@ -2,35 +2,34 @@
 
   <div class="art-ajax-container" id="artAjaxContainer">
 
-    <div class="art-page " data-next="?page=article" data-page-title="article 2">
+    <!-- <div class="art-page" data-page-title="article 2"> -->
+    <div class="art-page" data-next="?page=article" data-page-title="article 2">
 
       <?php
-        if ( $isAjax ) {
-          ?>
-          <div class="container-fluid sm-mobile section mb-5">
-            <div class="row">
-              <div class="col-lg-12 banner">
-                <a href="#" class="dashed-shadow sm-large-content">
-                  <span class="shadow"></span>
-                  <div class="ajax-image" data-lg="<?= URL; ?>img/banners/adv_3.jpg" data-sm="<?= URL; ?>img/banners/adv_3-sm.jpg" data-alt="как я две недели тестировала Achronim"></div>
-                </a>
-              </div>
+      if ( $isAjax ) {
+        ?>
+        <div class="container-fluid display-mobile section mb-5">
+          <div class="row">
+            <div class="col-lg-12 banner">
+              <a href="#" class="dashed-shadow">
+                <span class="shadow"></span>
+                <div class="ajax-image" data-sm="<?= URL; ?>/img/true_banners/banner_300_250.jpg"></div>
+              </a>
             </div>
           </div>
+        </div>
 
 
-          <div class="container-fluid sm-mobile section mb-5">
-            <div class="col-lg-12">
-              <div class="card sm-full-content banner">
-                <a href="#" class="thumb hover-overlay">
-                  <div class="ajax-image" data-lg="<?= URL; ?>img/banners/adv_1.jpg" data-sm="<?= URL; ?>img/banners/adv_1-sm.jpg" data-alt="как я две недели тестировала Achronim"></div>
-                </a>
-              </div>
-            </div>
+        <div class="container-fluid display-mobile section mb-5">
+          <div class="col-lg-12 banner">
+            <a href="#" class="display-mobile">
+              <div class="ajax-image" data-sm="<?= URL; ?>/img/true_banners/banner_320_250.jpg"></div>
+            </a>
           </div>
-          <?php
-        }
-       ?>
+        </div>
+        <?php
+      }
+      ?>
 
 
 

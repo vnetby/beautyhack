@@ -61,9 +61,18 @@
 
           <div class="row p-left">
             <div class="col-lg-12">
-              <div class="shadow-both right image sm-full-content">
-                <div class="ajax-image" data-lg="<?= URL; ?>img/banners/adv_1.jpg"  data-sm="<?= URL; ?>img/banners/adv_1-sm.jpg" data-alt="как я две недели тестировала Achronim"></div>
+
+              <div class="banner right">
+                <div class="shadow-both display-desktop display-tablet">
+                  <a href="#" class="thumb mb-0 hover-overlay">
+                    <div class="ajax-image" data-lg="<?= URL; ?>img/true_banners/banner_300_600.jpg" data-alt="HM banner"></div>
+                  </a>
+                </div>
+                <a href="#" class="display-mobile">
+                  <div class="ajax-image" data-sm="<?= URL; ?>/img/true_banners/banner_320_250.jpg"></div>
+                </a>
               </div>
+
               <h3 class="art-title-lg">Экология</h3>
               <p>
                 В мировом океане 5,25 триллиона пластиковых предметов, из которых 269 тысяч тонн пластика плавает на поверхности и образует мусорные острова, а 100 тысяч морских животных умирают от него каждый год.
@@ -165,9 +174,10 @@
                 Масло карите, оно же масло ши — известный антиоксидант, который не только широко используется у Африканского населения для лечения заболеваний кожи, но и является популярным компонентом во многих косметических средствах. За счет содержащихся в нем витамина Е, коричной кислоты и жирных кислот он питает кожу, улучшает местную микроциркуляцию, защищает и восстанавливает кожу после УФ воздействия.
               </p>
 
-              <div class="banner mobile-s mb-4 sm-full-content">
-                <a href="#">
-                  <div class="ajax-image" data-sm="<?= URL; ?>/img/banners/adv_2-sm.jpg"></div>
+              <div class="banner display-mobile mb-3">
+                <a href="#" class="dashed-shadow">
+                  <span class="shadow"></span>
+                  <div class="ajax-image" data-sm="<?= URL; ?>/img/true_banners/banner_300_250.jpg"></div>
                 </a>
               </div>
 
