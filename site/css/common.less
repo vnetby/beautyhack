@@ -2851,24 +2851,12 @@ figure {
 
 }
 
-@keyframe hideBookmark {
-  0% {
-    transform: translateY(-100%);
-  }
-  1% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-100%);
-  }
-}
-
 
 .bookmark-btn {
   cursor: pointer;
   transition: .3s;
   animation-duration: .3s;
-  width: 24px;
+  width: 20px;
   height: 35px;
   overflow: hidden;
   background-color: #fff;
@@ -2887,17 +2875,21 @@ figure {
   }
 
   input:checked {
-    & ~ .has {
-      transform: translateY(0);
-      // animation-direction: normal;
+  }
+
+  &.remove-bookmark {
+    .has {
+      transform: none;
+      animation: bounceIn;
+      animation-duration: .2s;
       animation-fill-mode: forwards;
-      // animation-name: hideBookmark;
-      animation-name: bounceIn;
-      // transform: translateY(0);
     }
-    & ~ .sign:after {
-      color: #fff;
-      content: '-';
+  }
+
+  &.add-bookmark {
+    .has {
+      transform: translateY(-100%);
+      transition: .2s;
     }
   }
 }
@@ -2910,7 +2902,6 @@ figure {
   position: absolute;
   top: 0;
   left: 0;
-  transition: inherit;
   border: none;
 
   &:after {
@@ -2946,13 +2937,7 @@ figure {
 
   &.has {
     z-index: 2;
-    transform: translateY(-100%);
     transition: inherit;
-    animation-duration: .2s;
-    animation-fill-mode: forwards;
-    // animation-name: hideBookmark;
-    // animation-name: bounceIn;
-    // animation-direction: reverse;
 
     &:after {
       content: '-';

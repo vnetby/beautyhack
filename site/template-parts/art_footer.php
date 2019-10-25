@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="save-bookmark">
-          <label class="bookmark-btn">
+          <label class="bookmark-btn add-bookmark">
             <input type="checkbox" class="save-bookmark-input" name="saveBookmarkInput" id="saveBookmarkInputFoot" data-has-label="Удалить из закладок" data-add-label="Сохранить в закладки" data-page="PAGE_INDEX" data-ajax="/_request.php?action=save_bookmark">
             <div class="bookmark-ico has">
               <?= $svg->get_ico('bookmark_add'); ?>
@@ -77,13 +77,3 @@
 
 
 </div>
-
-<!-- <label class="bookmark-btn">
-  <input type="checkbox" class="save-bookmark-input" name="saveBookmarkInput" id="saveBookmarkInputFoot" data-has-label="Удалить из закладок" data-add-label="Сохранить в закладки" data-page="PAGE_INDEX" data-ajax="/_request.php?action=save_bookmark">
-  <div class="bookmark-ico has">
-    <?= $svg->get_ico('bookmark_add'); ?>
-  </div>
-  <div class="bookmark-ico add">
-    <?= $svg->get_ico('bookmark_2_add'); ?>
-  </div>
-</label> -->

@@ -74,8 +74,8 @@
               </button>
             </div>
             <div class="sticky-bookmarks">
-              <label class="bookmark-btn">
-                <input type="checkbox" class="save-bookmark-input" name="saveBookmarkInput" id="saveBookmarkInput" data-page="PAGE_INDEX" data-ajax="/_request.php?action=save_bookmark">
+              <label class="bookmark-btn remove-bookmark">
+                <input type="checkbox" class="save-bookmark-input" name="saveBookmarkInput" id="saveBookmarkInput" data-page="PAGE_INDEX" data-ajax="/_request.php?action=save_bookmark" checked>
                 <div class="bookmark-ico has">
                   <?= $svg->get_ico('bookmark_add'); ?>
                 </div>

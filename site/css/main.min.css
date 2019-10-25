@@ -3061,23 +3061,6 @@ figure {
             transform: translateY(0);
   }
 }
-@keyframe hideBookmark {
-  0% {
-    -webkit-transform: translateY(-100%);
-        -ms-transform: translateY(-100%);
-            transform: translateY(-100%);
-  }
-  1% {
-    -webkit-transform: translateY(0);
-        -ms-transform: translateY(0);
-            transform: translateY(0);
-  }
-  100% {
-    -webkit-transform: translateY(-100%);
-        -ms-transform: translateY(-100%);
-            transform: translateY(-100%);
-  }
-}
 .bookmark-btn {
   cursor: pointer;
   -webkit-transition: 0.3s;
@@ -3085,7 +3068,7 @@ figure {
   transition: 0.3s;
   -webkit-animation-duration: 0.3s;
           animation-duration: 0.3s;
-  width: 24px;
+  width: 20px;
   height: 35px;
   overflow: hidden;
   background-color: #fff;
@@ -3099,18 +3082,24 @@ figure {
   position: absolute;
   right: 100%;
 }
-.bookmark-btn input:checked ~ .has {
-  -webkit-transform: translateY(0);
-      -ms-transform: translateY(0);
-          transform: translateY(0);
+.bookmark-btn.remove-bookmark .has {
+  -webkit-transform: none;
+      -ms-transform: none;
+          transform: none;
+  -webkit-animation: bounceIn;
+          animation: bounceIn;
+  -webkit-animation-duration: 0.2s;
+          animation-duration: 0.2s;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
-  -webkit-animation-name: bounceIn;
-          animation-name: bounceIn;
 }
-.bookmark-btn input:checked ~ .sign:after {
-  color: #fff;
-  content: '-';
+.bookmark-btn.add-bookmark .has {
+  -webkit-transform: translateY(-100%);
+      -ms-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
 }
 .bookmark-ico {
   display: block;
@@ -3118,9 +3107,6 @@ figure {
   position: absolute;
   top: 0;
   left: 0;
-  -webkit-transition: inherit;
-  -o-transition: inherit;
-  transition: inherit;
   border: none;
 }
 .bookmark-ico:after {
@@ -3158,16 +3144,9 @@ figure {
 }
 .bookmark-ico.has {
   z-index: 2;
-  -webkit-transform: translateY(-100%);
-      -ms-transform: translateY(-100%);
-          transform: translateY(-100%);
   -webkit-transition: inherit;
   -o-transition: inherit;
   transition: inherit;
-  -webkit-animation-duration: 0.2s;
-          animation-duration: 0.2s;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
 }
 .bookmark-ico.has:after {
   content: '-';

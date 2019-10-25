@@ -31,14 +31,16 @@ export class AjaxSaveBookmarks extends DOM {
 
 
   saveBookmark ( link ) {
-    this.switchBookmarkHTML( link );
+    let checked = link.checked;
+
+    this.switchBookmarkHTML( link, checked );
+
     let pageId  = link.dataset.page;
     if ( !pageId ) return;
 
     let ajax  = link.dataset.ajax;
     if ( !ajax ) return;
 
-    let checked = link.checked;
     this.sendRequest( checked, pageId, ajax )
     .then ( res => {
       console.log( res );
@@ -46,11 +48,22 @@ export class AjaxSaveBookmarks extends DOM {
   }
 
 
-  switchBookmarkHTML ( link ) {
-    let checked  = link.checked;
+  switchBookmarkHTML ( link, checked ) {
     let label    = link.parentNode.parentNode.querySelector('.label');
     let hasLabel = link.dataset.hasLabel;
     let addLabel = link.dataset.addLabel;
+    let parent = link.parentNode;
+    if ( checked ) {
+      this.removeClass(parent, 'add-bookmark');
+      setTimeout( () => {
+        this.addClass(parent, 'remove-bookmark');
+      }, 0);
+    } else {
+      this.removeClass(parent, 'remove-bookmark');
+      setTimeout( () => {
+        this.addClass(parent, 'add-bookmark');
+      }, 0);
+    }
     if ( label && hasLabel && addLabel ) {
       if ( checked ) {
         label.innerHTML = hasLabel;
