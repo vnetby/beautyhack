@@ -13,6 +13,6 @@ export const dismissModal = container => {
     btn.addEventListener('click', e => {
       e.preventDefault();
       $.fancybox.close();
-    })
-  })
+    });
+  });
 }

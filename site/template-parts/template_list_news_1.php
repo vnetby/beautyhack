@@ -1,15 +1,32 @@
-<div class="row list-cards-row grid">
+<!-- 
+если нет баннеров надо добавить класс has-banner 
+если есть баннр надо добавить класс no-banner  
+-->
 
+<?php
+$banners = [
+  URL . '/img/true_banners/banner_320_250.jpg',
+  URL . '/img/true_banners/banner_300_600.jpg',
+  URL . '/img/true_banners/banner_320_250.jpg',
+  URL . '/img/true_banners/banner_550_150.jpg',
+  URL . '/img/true_banners/banner_300_250.jpg'
+];
 
+$banners = json_encode($banners);
+?>
 
-  <div class="banner display-mobile col-lg-12 row-banner">
+<div class="row list-cards-row grid art-js-banners" data-banners='<?= $banners; ?>'>
+
+  <!-- <div class="banner display-mobile col-lg-12 row-banner" data-index="0">
     <a href="#">
       <div class="ajax-image" data-sm="<?= URL; ?>/img/true_banners/banner_320_250.jpg"></div>
     </a>
-  </div>
+  </div> -->
 
 
-  <div class="col-lg-8 col-sm-12 large">
+  <!-- col-lg-8 col-sm-12 -->
+  <!-- 0 -->
+  <div class="art-card-col">
 
     <div class="card">
 
@@ -49,7 +66,9 @@
 
   </div>
 
-  <div class="col-lg-4 col-sm-6">
+
+  <!-- 1 -->
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -89,7 +108,8 @@
 
 
 
-  <div class="col-lg-4 col-sm-6">
+  <!-- 2 -->
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -127,7 +147,10 @@
     </div>
   </div>
 
-  <div class="col-lg-4 col-sm-6">
+
+
+  <!-- 3 -->
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -167,7 +190,7 @@
 
 
 
-  <div class="col-lg-4 col-sm-6 display-desktop display-tablet">
+  <!-- <div class="art-card-col display-desktop display-tablet" data-index="1">
     <div class="card banner">
       <div class="shadow-both">
         <a href="#" class="thumb mb-0 hover-overlay">
@@ -175,12 +198,13 @@
         </a>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
 
-
-  <div class="col-lg-4 col-sm-12 large">
+  <!-- col-lg-4 col-sm-12 -->
+  <!-- 4 -->
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -219,17 +243,17 @@
   </div>
 
 
-  <div class="banner display-mobile col-lg-12 row-banner">
+  <!-- <div class="banner display-mobile col-lg-12 row-banner" data-index="2">
     <a href="#">
       <div class="ajax-image" data-sm="<?= URL; ?>/img/true_banners/banner_320_250.jpg"></div>
     </a>
-  </div>
+  </div> -->
 
 
 
 
-
-  <div class="col-lg-4 col-sm-6">
+  <!-- 5 -->
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -271,8 +295,8 @@
 
 
 
-
-  <div class="col-lg-4 col-sm-6">
+  <!-- 6 -->
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -312,8 +336,9 @@
 
 
 
-
-  <div class="col-lg-8 col-sm-6">
+  <!-- col-lg-8 col-sm-6 -->
+  <!-- 7 -->
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -352,8 +377,8 @@
   </div>
 
 
-
-  <div class="col-lg-4 col-sm-6">
+  <!-- 8 -->
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -393,13 +418,13 @@
 
 
 
-
-  <div class="col-lg-12 banner display-desktop display-tablet row-banner">
+  <!-- 
+  <div class="col-lg-12 banner display-desktop display-tablet row-banner" data-index="3">
     <a href="#" class="dashed-shadow">
       <span class="shadow"></span>
       <div class="ajax-image" data-lg="<?= URL; ?>img/true_banners/banner_550_150.jpg" data-alt="Jandex banner"></div>
     </a>
-  </div>
+  </div> -->
 
 
 
@@ -409,8 +434,8 @@
 
 
 
-
-  <div class="col-lg-4 col-sm-6">
+  <!-- 9 -->
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -451,18 +476,18 @@
 
 
 
-
-  <div class="banner display-mobile col-lg-12 row-banner">
+  <!-- 
+  <div class="banner display-mobile col-lg-12 row-banner" data-index="4">
     <a href="#" class="dashed-shadow">
       <span class="shadow"></span>
       <div class="ajax-image" data-sm="<?= URL; ?>/img/true_banners/banner_300_250.jpg"></div>
     </a>
-  </div>
+  </div> -->
 
 
 
-
-  <div class="col-lg-4 col-sm-6">
+  <!-- 10 -->
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -504,8 +529,8 @@
 
 
 
-
-  <div class="col-lg-4 col-sm-6">
+  <!-- 11 -->
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -543,7 +568,9 @@
     </div>
   </div>
 
-  <div class="col-lg-4 col-sm-6">
+
+  <!-- 12 -->
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -581,7 +608,9 @@
     </div>
   </div>
 
-  <div class="col-lg-4 col-sm-6">
+
+  <!-- 13 -->
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -619,7 +648,9 @@
     </div>
   </div>
 
-  <div class="col-lg-4 col-sm-6 content-over">
+
+  <!-- 14 -->
+  <div class="art-card-col content-over">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">

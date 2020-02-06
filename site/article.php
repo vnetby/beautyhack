@@ -185,7 +185,7 @@
                 </a>
               </div>
 
-              <h3 class="art-title-md">Популярные ароматы:</h3>
+              <h4 class="art-title-md">Популярные ароматы:</h4>
 
               <ul>
                 <li>Angel – $320</li>
@@ -205,8 +205,8 @@
                 <img src="<?= URL; ?>img/authors/03.jpg" alt="avatar">
               </div>
               <div class="author-head">
-                <h3 class="art-title-md">Татьяна Якимова</h3>
-                <h4 class="art-sub-title">Журналист, бьюти-эксперт. Мама четверых детей. Мисс Мира 2000</h4>
+                <h4 class="art-title-md">Татьяна Якимова</h4>
+                <h5 class="art-sub-title">Журналист, бьюти-эксперт. Мама четверых детей. Мисс Мира 2000</h5>
               </div>
               <div class="author-content">
                 <p>

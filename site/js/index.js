@@ -9,10 +9,11 @@ window.BH.tablet = document.body.dataset.tablet || 992;
 window.BH.dektop = document.body.dataset.desktop || 1280;
 
 window.BH.jsInfoBlockBreakpoint = 'tablet';
-window.BH.headerBreakpoint      = 'tablet';
+window.BH.headerBreakpoint = 'tablet';
 
 $.fancybox.defaults.smallBtn = false;
-$.fancybox.defaults.touch    = false;
+$.fancybox.defaults.touch = false;
+
 
 import { objectFit } from './ie_fix.js';
 
@@ -54,22 +55,27 @@ import { AjaxQuiz } from './AjaxQuiz.js';
 
 import { FormValidate } from './FormValidate.js';
 
+import { AnimateClick } from './AnimateClick.js';
 
-export const dynamicScripts = ( container ) => {
-  objectFit( container );
-  new AjaxImage( container );
-  initSliders( container );
-  showPassword( container );
-  new JsInfoBlock( container );
-  new AjaxForm( container );
-  new ArtFooter ( container );
-  new AjaxSaveBookmarks( container );
-  new AjaxBattle ( container );
-  new LoadPreviewImage ( container );
-  new AjaxTest ( container );
-  new AjaxQuiz ( container );
-  dismissModal( container );
-  new FormValidate( container );
+import { artLoopBanners } from "./artLoopBanners";
+
+
+export const dynamicScripts = (container) => {
+  objectFit(container);
+  new AjaxImage(container);
+  initSliders(container);
+  showPassword(container);
+  new JsInfoBlock(container);
+  new AjaxForm(container);
+  new ArtFooter(container);
+  new AjaxSaveBookmarks(container);
+  new AjaxBattle(container);
+  new LoadPreviewImage(container);
+  new AjaxTest(container);
+  new AjaxQuiz(container);
+  dismissModal(container);
+  new FormValidate(container);
+  artLoopBanners(container);
 }
 
 
@@ -82,6 +88,10 @@ export const staticScripts = () => {
   // new Tabs('.list-authors.has-tabs');
   new ArticlePage;
   new AjaxSearch;
+  // new AnimateClick({
+  //   excludeTags: [],
+  //   duration: 500
+  // });
 }
 
 
