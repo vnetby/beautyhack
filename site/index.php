@@ -7,8 +7,8 @@ $svg = new SvgIcons;
 
 $login = false;
 
-if ( isset($_GET['login'] ) ) {
-  if ( $_GET['login'] === 'true' ) {
+if (isset($_GET['login'])) {
+  if ($_GET['login'] === 'true') {
     $login = true;
   }
 }
@@ -16,7 +16,7 @@ if ( isset($_GET['login'] ) ) {
 
 $headers = getallheaders();
 $isAjax = false;
-if ( isset($headers['ajaxLoadArt'] ) ) $isAjax = true;
+if (isset($headers['ajaxLoadArt'])) $isAjax = true;
 
 
 
@@ -39,16 +39,16 @@ if (!isset($_GET['page'])) {
   <link rel="stylesheet" href="<?= URL; ?>assets/assets.min.css">
   <link rel="stylesheet" href="<?= URL; ?>css/main.min.css">
   <script>
-  var back_dates = {
-    SRC : '<?= URL; ?>'
-  }
+    var back_dates = {
+      SRC: '<?= URL; ?>'
+    }
   </script>
 </head>
 
 <body data-mobile="576" data-tablet="992" data-desktop="1280">
   <?php
-  if ( $page === 'home.php' ) {
-    require( 'template-parts/brand_site_background.php' );
+  if ($page === 'home.php' || $page === 'list_of_articles.php' || $page === 'article.php' || $page === 'article2.php') {
+    require('template-parts/brand_site_background.php');
   }
   ?>
   <div class="main" id="main">
@@ -57,7 +57,7 @@ if (!isset($_GET['page'])) {
 
     require('template-parts/header.php');
 
-    require( $page );
+    require($page);
 
     require('template-parts/footer.php');
     ?>

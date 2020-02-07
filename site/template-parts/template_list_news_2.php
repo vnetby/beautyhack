@@ -1,16 +1,17 @@
-<div class="row list-cards-row">
+<?php
+$banners = [
+  ['link' => 'https://google.com', 'img' => URL . '/img/true_banners/banner_320_250.jpg']
+];
+$banners = json_encode($banners);
+?>
 
+<div class="row list-cards-row art-js-banners simple-preview" data-banners='<?= $banners; ?>'>
+  <!-- 
+  template_list_news_2
+ recommendation section
+-->
 
-
-  <div class="banner display-mobile col-lg-12 row-banner">
-    <a href="#">
-      <div class="ajax-image" data-sm="<?= URL; ?>/img/true_banners/banner_320_250.jpg"></div>
-    </a>
-  </div>
-
-
-
-  <div class="col-lg-4 col-sm-6">
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -49,7 +50,7 @@
   </div>
 
 
-  <div class="col-lg-4 col-sm-6">
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -93,7 +94,7 @@
   </div>
 
 
-  <div class="col-lg-4 col-sm-6">
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -132,7 +133,7 @@
   </div>
 
 
-  <div class="col-lg-4 col-sm-6">
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -171,7 +172,7 @@
   </div>
 
 
-  <div class="col-lg-4 col-sm-6">
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -210,7 +211,7 @@
   </div>
 
 
-  <div class="col-lg-4 col-sm-6">
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">

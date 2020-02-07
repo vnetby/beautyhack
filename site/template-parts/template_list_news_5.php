@@ -1,14 +1,20 @@
-<div class="row list-cards-row grid">
+<?php
+$banners = [
+  ['link' => 'https://google.com', 'img' => URL . '/img/true_banners/banner_320_250.jpg'],
+  ['link' => 'https://google.com', 'img' => URL . '/img/true_banners/banner_300_600.jpg'],
+  ['link' => 'https://google.com', 'img' => URL . '/img/true_banners/banner_320_250.jpg'],
+  ['link' => 'https://google.com', 'img' => URL . '/img/true_banners/banner_550_150.jpg'],
+  ['link' => 'https://google.com', 'img' => URL . '/img/true_banners/banner_300_250.jpg']
+];
+$banners = json_encode($banners);
+?>
 
+<div class="row list-cards-row art-js-banners" data-banners='<?= $banners; ?>'>
 
-
-  <div class="banner display-mobile col-lg-12 row-banner">
-    <a href="#">
-      <div class="ajax-image" data-sm="<?= URL; ?>/img/true_banners/banner_320_250.jpg"></div>
-    </a>
-  </div>
-
-
+  <!-- 
+  template_list_news_5
+ list of articles page
+-->
 
   <div class="col-lg-8 col-sm-12 large">
 
@@ -58,7 +64,9 @@
 
   </div>
 
-  <div class="col-lg-4 col-sm-6">
+
+
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -106,7 +114,10 @@
 
 
 
-  <div class="col-lg-4 col-sm-6">
+
+
+
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -152,7 +163,9 @@
     </div>
   </div>
 
-  <div class="col-lg-4 col-sm-6">
+
+
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -199,22 +212,7 @@
   </div>
 
 
-
-
-  <div class="col-lg-4 col-sm-6 display-desktop display-tablet">
-    <div class="card banner">
-      <div class="shadow-both">
-        <a href="#" class="thumb mb-0 hover-overlay">
-          <div class="ajax-image" data-lg="<?= URL; ?>img/true_banners/banner_300_600.jpg" data-alt="HM banner"></div>
-        </a>
-      </div>
-    </div>
-  </div>
-
-
-
-
-  <div class="col-lg-4 col-sm-12 large">
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -261,18 +259,7 @@
   </div>
 
 
-
-
-  <div class="banner display-mobile col-lg-12 row-banner">
-    <a href="#">
-      <div class="ajax-image" data-sm="<?= URL; ?>/img/true_banners/banner_320_250.jpg"></div>
-    </a>
-  </div>
-
-
-
-
-  <div class="col-lg-4 col-sm-6">
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -319,7 +306,8 @@
   </div>
 
 
-  <div class="col-lg-4 col-sm-6">
+
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -369,7 +357,7 @@
 
 
 
-  <div class="col-lg-8 col-sm-6">
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -417,7 +405,7 @@
 
 
 
-  <div class="col-lg-4 col-sm-6">
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -464,20 +452,7 @@
   </div>
 
 
-
-
-
-  <div class="col-lg-12 banner display-desktop display-tablet row-banner">
-    <a href="#" class="dashed-shadow">
-      <span class="shadow"></span>
-      <div class="ajax-image" data-lg="<?= URL; ?>img/true_banners/banner_550_150.jpg" data-alt="Jandex banner"></div>
-    </a>
-  </div>
-
-
-
-
-  <div class="col-lg-4 col-sm-6">
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -526,19 +501,7 @@
 
 
 
-
-
-  <div class="banner display-mobile col-lg-12 row-banner">
-    <a href="#" class="dashed-shadow">
-      <span class="shadow"></span>
-      <div class="ajax-image" data-sm="<?= URL; ?>/img/true_banners/banner_300_250.jpg"></div>
-    </a>
-  </div>
-
-
-
-
-  <div class="col-lg-4 col-sm-6">
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -589,7 +552,7 @@
 
 
 
-  <div class="col-lg-4 col-sm-6">
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -635,7 +598,7 @@
     </div>
   </div>
 
-  <div class="col-lg-4 col-sm-6">
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -681,7 +644,7 @@
     </div>
   </div>
 
-  <div class="col-lg-4 col-sm-6">
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -727,7 +690,7 @@
     </div>
   </div>
 
-  <div class="col-lg-4 col-sm-6 content-over">
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -761,7 +724,7 @@
 
     </div>
   </div>
-  
+
 
 
 </div>

@@ -1,30 +1,22 @@
-<!-- 
-если нет баннеров надо добавить класс has-banner 
-если есть баннр надо добавить класс no-banner  
--->
-
 <?php
 $banners = [
-  URL . '/img/true_banners/banner_320_250.jpg',
-  URL . '/img/true_banners/banner_300_600.jpg',
-  URL . '/img/true_banners/banner_320_250.jpg',
-  URL . '/img/true_banners/banner_550_150.jpg',
-  URL . '/img/true_banners/banner_300_250.jpg'
+  ['link' => 'https://google.com', 'img' => URL . '/img/true_banners/banner_320_250.jpg'],
+  ['link' => 'https://google.com', 'img' => URL . '/img/true_banners/banner_300_600.jpg'],
+  ['link' => 'https://google.com', 'img' => URL . '/img/true_banners/banner_320_250.jpg'],
+  ['link' => 'https://google.com', 'img' => URL . '/img/true_banners/banner_550_150.jpg'],
+  ['link' => 'https://google.com', 'img' => URL . '/img/true_banners/banner_300_250.jpg']
 ];
-
 $banners = json_encode($banners);
 ?>
 
-<div class="row list-cards-row grid art-js-banners" data-banners='<?= $banners; ?>'>
+<div class="row list-cards-row art-js-banners" data-banners='<?= $banners; ?>'>
 
-  <!-- <div class="banner display-mobile col-lg-12 row-banner" data-index="0">
-    <a href="#">
-      <div class="ajax-image" data-sm="<?= URL; ?>/img/true_banners/banner_320_250.jpg"></div>
-    </a>
-  </div> -->
+  <!-- 
+  template_list_news_1
+ home main section
+-->
 
 
-  <!-- col-lg-8 col-sm-12 -->
   <!-- 0 -->
   <div class="art-card-col">
 
@@ -188,21 +180,6 @@ $banners = json_encode($banners);
     </div>
   </div>
 
-
-
-  <!-- <div class="art-card-col display-desktop display-tablet" data-index="1">
-    <div class="card banner">
-      <div class="shadow-both">
-        <a href="#" class="thumb mb-0 hover-overlay">
-          <div class="ajax-image" data-lg="<?= URL; ?>img/true_banners/banner_300_600.jpg" data-alt="HM banner"></div>
-        </a>
-      </div>
-    </div>
-  </div> -->
-
-
-
-  <!-- col-lg-4 col-sm-12 -->
   <!-- 4 -->
   <div class="art-card-col">
     <div class="card">
@@ -242,16 +219,6 @@ $banners = json_encode($banners);
     </div>
   </div>
 
-
-  <!-- <div class="banner display-mobile col-lg-12 row-banner" data-index="2">
-    <a href="#">
-      <div class="ajax-image" data-sm="<?= URL; ?>/img/true_banners/banner_320_250.jpg"></div>
-    </a>
-  </div> -->
-
-
-
-
   <!-- 5 -->
   <div class="art-card-col">
     <div class="card">
@@ -290,9 +257,6 @@ $banners = json_encode($banners);
       </div>
     </div>
   </div>
-
-
-
 
 
   <!-- 6 -->
@@ -335,8 +299,6 @@ $banners = json_encode($banners);
   </div>
 
 
-
-  <!-- col-lg-8 col-sm-6 -->
   <!-- 7 -->
   <div class="art-card-col">
     <div class="card">
@@ -418,22 +380,6 @@ $banners = json_encode($banners);
 
 
 
-  <!-- 
-  <div class="col-lg-12 banner display-desktop display-tablet row-banner" data-index="3">
-    <a href="#" class="dashed-shadow">
-      <span class="shadow"></span>
-      <div class="ajax-image" data-lg="<?= URL; ?>img/true_banners/banner_550_150.jpg" data-alt="Jandex banner"></div>
-    </a>
-  </div> -->
-
-
-
-
-
-
-
-
-
   <!-- 9 -->
   <div class="art-card-col">
     <div class="card">
@@ -473,19 +419,6 @@ $banners = json_encode($banners);
     </div>
   </div>
 
-
-
-
-  <!-- 
-  <div class="banner display-mobile col-lg-12 row-banner" data-index="4">
-    <a href="#" class="dashed-shadow">
-      <span class="shadow"></span>
-      <div class="ajax-image" data-sm="<?= URL; ?>/img/true_banners/banner_300_250.jpg"></div>
-    </a>
-  </div> -->
-
-
-
   <!-- 10 -->
   <div class="art-card-col">
     <div class="card">
@@ -524,9 +457,6 @@ $banners = json_encode($banners);
       </div>
     </div>
   </div>
-
-
-
 
 
   <!-- 11 -->
@@ -650,7 +580,7 @@ $banners = json_encode($banners);
 
 
   <!-- 14 -->
-  <div class="art-card-col content-over">
+  <div class="art-card-col">
     <div class="card">
 
       <a href="#" class="thumb hover-overlay">
@@ -665,6 +595,17 @@ $banners = json_encode($banners);
         </div>
       </a>
 
+
+      <div class="card-meta">
+        <a href="#" class="cat fs-xm">Красота и здоровье</a>
+        <div class="views">
+          <span class="ico eye">
+            <?= $svg->get_ico('eye'); ?>
+          </span>
+          <span class="count fs-s">2k</span>
+        </div>
+      </div>
+
       <div class="card-content">
         <a href="#" class="card-title fs-xl">
           Почему 8 часов сна – обязательная норма для кажого?
@@ -676,5 +617,9 @@ $banners = json_encode($banners);
 
     </div>
   </div>
+
+
+
+
 
 </div>
