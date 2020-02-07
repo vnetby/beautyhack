@@ -45,7 +45,8 @@ import { ArtFooter } from './ArtFooter.js';
 
 import { AjaxSaveBookmarks } from './AjaxSaveBookmarks.js';
 
-import { AjaxBattle } from './AjaxBattle.js';
+// import { AjaxBattle } from './AjaxBattle.js';
+import { initAjaxBattle } from './AjaxBattle.js';
 
 import { LoadPreviewImage } from './LoadPreviewImage.js';
 
@@ -69,7 +70,7 @@ export const dynamicScripts = (container) => {
   new AjaxForm(container);
   new ArtFooter(container);
   new AjaxSaveBookmarks(container);
-  new AjaxBattle(container);
+  new initAjaxBattle(container);
   new LoadPreviewImage(container);
   new AjaxTest(container);
   new AjaxQuiz(container);

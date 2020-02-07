@@ -2480,7 +2480,6 @@ figure {
   }
 }
 
-
 /*==============================================================
 *												BOOTSTRAP MIXINS
 =============================================================== */
@@ -2700,5 +2699,55 @@ figure {
     animation-name: clickAnimate;
     animation-duration: 0.5s;
     animation-timing-function: linear;
+  }
+}
+
+/*==============================================================
+*												BATTLE LIST
+=============================================================== */
+.battle-list {
+  .battle-row {
+    margin-bottom: 40px!important;
+  }
+  .battle-col {
+    padding-bottom: 80px;
+    &:first-child {
+      padding-top: 40px;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .btn-row {
+      margin-bottom: 0!important;
+    }
+
+    @media (max-width: @media_tablet) {
+      // padding-bottom: 50px;
+      // &:first-child {
+      //   padding-top: 27px;
+      // }
+    }
+    @media (max-width: @media_mobile) {
+      // padding-bottom: 30px;
+      // padding-top: 15px;
+    }
+  }
+
+  .ajax-battle-item {
+    .col-lg-12 {
+      padding: 0;
+    }
+    .row {
+      margin: 0;
+    }
+    .battle-img {
+      &:nth-child(2) {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
+    }
   }
 }

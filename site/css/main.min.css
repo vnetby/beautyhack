@@ -3065,6 +3065,40 @@ figure {
   -webkit-animation-timing-function: linear;
           animation-timing-function: linear;
 }
+/*==============================================================
+*												BATTLE LIST
+=============================================================== */
+.battle-list .battle-row {
+  margin-bottom: 40px!important;
+}
+.battle-list .battle-col {
+  padding-bottom: 80px;
+}
+.battle-list .battle-col:first-child {
+  padding-top: 40px;
+}
+.battle-list .battle-col:last-child {
+  margin-bottom: 0;
+}
+.battle-list .battle-col .btn-row {
+  margin-bottom: 0!important;
+}
+@media (max-width: 992px) {
+}
+@media (max-width: 576px) {
+}
+.battle-list .ajax-battle-item .col-lg-12 {
+  padding: 0;
+}
+.battle-list .ajax-battle-item .row {
+  margin: 0;
+}
+.battle-list .ajax-battle-item .battle-img:nth-child(2) {
+  padding-left: 0;
+}
+.battle-list .ajax-battle-item .battle-img:last-child {
+  padding-right: 0;
+}
 .ico {
   display: -webkit-box;
   display: -ms-flexbox;

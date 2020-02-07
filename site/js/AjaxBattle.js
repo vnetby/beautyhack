@@ -1,38 +1,48 @@
 import { DOM } from './DOM/index.js';
 
+export const initAjaxBattle = wrap => {
+  let dom = new DOM;
+  let container = dom.getContainer(wrap);
 
+  let items = dom.findAll('.ajax-battle-item', container);
+
+  if (!items || !items.length) {
+    new AjaxBattle(wrap);
+  } else {
+    items.forEach(item => {
+      new AjaxBattle(item);
+    });
+  }
+}
 
 
 export class AjaxBattle extends DOM {
-  constructor ( container ) {
-    super ();
+  constructor(container) {
+    super();
 
-    let wrap = this.getContainer ( container );
+    let wrap = this.getContainer(container);
 
-    if ( !wrap ) return;
+    if (!wrap) return;
 
     this.container = this.findFirst('.js-battle', wrap);
 
-    if ( !this.container ) return;
+    if (!this.container) return;
 
     this.url = this.container.dataset.ajax;
 
-    this.getElements ();
+    this.getElements();
 
     this.getSelected();
 
     this.timerVoteRequest = 1000;
 
-    if ( this.voteBtn ) {
+    if (this.voteBtn) {
       this.initVoteBtn();
     }
 
 
-    if ( this.votedBtn ) {
-      // this.addProgress();
-      // this.setProgress();
-      // this.initMonitoringVote();
-      this.vote( true );
+    if (this.votedBtn) {
+      this.vote(true);
     }
 
     this.initSelectComp();
@@ -40,9 +50,9 @@ export class AjaxBattle extends DOM {
 
 
 
-  getElements () {
-    this.firstComp = this.findFirst('#firstCompVote', this.container );
-    this.secondComp = this.findFirst('#secondCompVote' , this.container);
+  getElements() {
+    this.firstComp = this.findFirst('#firstCompVote', this.container);
+    this.secondComp = this.findFirst('#secondCompVote', this.container);
 
     this.voteBtn = this.findFirst('#voteBattleBtn', this.container);
     this.votedBtn = this.findFirst('#votedBattleBtn', this.container);
@@ -51,13 +61,13 @@ export class AjaxBattle extends DOM {
   }
 
 
-  getSelected () {
+  getSelected() {
     this.selected = false;
-    if ( this.firstComp.classList.contains('selected') ) {
+    if (this.firstComp.classList.contains('selected')) {
       this.selected = 1;
       return;
     }
-    if ( this.secondComp.classList.contains('selected') ) {
+    if (this.secondComp.classList.contains('selected')) {
       this.selected = 2;
       return;
     }
@@ -65,10 +75,10 @@ export class AjaxBattle extends DOM {
 
 
 
-  initVoteBtn () {
+  initVoteBtn() {
     this.voteBtn.addEventListener('click', e => {
       e.preventDefault();
-      if ( !this.selected ) {
+      if (!this.selected) {
         $.fancybox.open('<div class="fancy-alert">Сделайте свой выбор</div>', { touch: false });
       } else {
         this.vote();
@@ -83,9 +93,9 @@ export class AjaxBattle extends DOM {
   }
 
 
-  selectComp (number, e) {
+  selectComp(number, e) {
     e.preventDefault();
-    if ( this.monitoring ) return;
+    if (this.monitoring) return;
     this.removeClass(this.firstComp, 'selected');
     this.removeClass(this.secondComp, 'selected');
     this.addClass(e.target, 'selected');
@@ -94,65 +104,65 @@ export class AjaxBattle extends DOM {
 
 
 
-  vote ( start ) {
-    if ( !start ) {
+  vote(start) {
+    if (!start) {
       this.replaceVoteBtn();
     }
-    this.addPreloader( this.container );
+    this.addPreloader(this.container);
     this.sendVote()
-    .then ( res => {
-      if ( !res ) {
-        this.removePreloader( this.container );
-        return;
-      }
-      let obj = JSON.parse( res );
-      this.percent = obj.firstPercent;
-      this.addProgress();
-      this.setProgress();
-      this.removePreloader( this.container );
-      if ( this.tryFinish( obj ) ) {
-        return;
-      }
-      this.initMonitoringVote();
-    });
+      .then(res => {
+        if (!res) {
+          this.removePreloader(this.container);
+          return;
+        }
+        let obj = JSON.parse(res);
+        this.percent = obj.firstPercent;
+        this.addProgress();
+        this.setProgress();
+        this.removePreloader(this.container);
+        if (this.tryFinish(obj)) {
+          return;
+        }
+        this.initMonitoringVote();
+      });
   }
 
 
 
-  initMonitoringVote () {
+  initMonitoringVote() {
     this.monitoring = true;
     this.monitoringVote();
   }
 
   monitoringVote() {
-    if ( this.finish ) return;
+    if (this.finish) return;
     this.sendVote()
-    .then( res => {
-      if ( res ) {
-        let obj = JSON.parse( res );
-        this.percent = obj.firstPercent;
-        this.setProgress();
-        if ( this.tryFinish( obj ) ) {
-          return;
+      .then(res => {
+        if (res) {
+          let obj = JSON.parse(res);
+          this.percent = obj.firstPercent;
+          this.setProgress();
+          if (this.tryFinish(obj)) {
+            return;
+          }
         }
-      }
-      setTimeout( () => {
-        this.monitoringVote();
-      }, this.timerVoteRequest );
-    });
+        setTimeout(() => {
+          this.monitoringVote();
+        }, this.timerVoteRequest);
+      });
   }
 
 
 
-  tryFinish ( obj ) {
-    if ( obj.finish ) {
+  tryFinish(obj) {
+    if (obj.finish) {
       this.finish = true;
     }
   }
 
 
 
-  setProgress () {
+  setProgress() {
     this.firstProgress.line.style.width = `${this.percent}%`;
     this.firstProgress.text.innerHTML = `${this.percent}%`;
 
@@ -160,7 +170,7 @@ export class AjaxBattle extends DOM {
   }
 
 
-  addProgress () {
+  addProgress() {
     let str = '<div class="battle-progress">';
 
     str += '<div class="comp-1" style="width: 15%;" id="progressFirstComp">';
@@ -173,15 +183,15 @@ export class AjaxBattle extends DOM {
 
     str += '</div>';
 
-    let wrap = this.strToDom( str );
+    let wrap = this.strToDom(str);
     this.battleProgressContainer.innerHTML = '';
-    this.battleProgressContainer.appendChild( wrap );
+    this.battleProgressContainer.appendChild(wrap);
     this.progressWrap = wrap;
-    this.createProgressObject ();
+    this.createProgressObject();
   }
 
 
-  createProgressObject () {
+  createProgressObject() {
     this.firstProgress = {};
     this.secondProgress = {};
 
@@ -193,25 +203,25 @@ export class AjaxBattle extends DOM {
   }
 
 
-  sendVote () {
+  sendVote() {
     let http = new XMLHttpRequest;
     let type = this.monitoring ? 'GET' : 'POST';
 
     http.open(type, this.url);
     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     let dates = this.monitoring ? null : `vote=${this.selected}`;
-    http.send( dates );
-    return new Promise ( (resolve, reject) => {
+    http.send(dates);
+    return new Promise((resolve, reject) => {
       http.onreadystatechange = () => {
-        if ( http.readyState === 4 && http.status === 200 ) {
-          resolve( http.responseText );
+        if (http.readyState === 4 && http.status === 200) {
+          resolve(http.responseText);
         }
       }
     });
   }
 
 
-  replaceVoteBtn () {
+  replaceVoteBtn() {
     let btn = this.create('button', 'btn border-black voted-battle-btn');
     btn.type = 'button';
     btn.id = 'votedBattleBtn';

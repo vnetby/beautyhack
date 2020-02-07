@@ -32,13 +32,13 @@ inputs => [
 
 
 
-if( isset ( $_GET['action']) ) {
+if (isset($_GET['action'])) {
 
 
 
 
-  if ( $_GET['action'] === 'login' ) {
-    echo json_encode ( [
+  if ($_GET['action'] === 'login') {
+    echo json_encode([
       'type'     => 'success',
       'redirect' => $_POST['origin']
     ]);
@@ -47,7 +47,7 @@ if( isset ( $_GET['action']) ) {
 
 
 
-  if ( $_GET['action'] === 'register' ) {
+  if ($_GET['action'] === 'register') {
     echo json_encode([
       'type'   => 'error',
       'inputs' => [
@@ -59,9 +59,9 @@ if( isset ( $_GET['action']) ) {
 
 
 
-  if ( $_GET['action'] === 'subscribe' ) {
+  if ($_GET['action'] === 'subscribe') {
     ob_start();
-    require ( ABSPATH . 'template-parts/ajax_thank_subscribe.php' );
+    require(ABSPATH . 'template-parts/ajax_thank_subscribe.php');
     $thank_subscribe = ob_get_clean();
 
     echo json_encode([
@@ -73,7 +73,7 @@ if( isset ( $_GET['action']) ) {
   }
 
 
-  if ( $_GET['action'] === 'recover' ) {
+  if ($_GET['action'] === 'recover') {
     echo json_encode([
       'type'   => 'success',
       'inputs' => [
@@ -86,21 +86,21 @@ if( isset ( $_GET['action']) ) {
 
 
 
-  if ( $_GET['action'] === 'search' ) {
-    require ( ABSPATH . 'template-parts/ajax_search_result.php' );
+  if ($_GET['action'] === 'search') {
+    require(ABSPATH . 'template-parts/ajax_search_result.php');
     exit;
   }
 
 
 
 
-  if ( $_GET['action'] === 'vote_article' ) {
-    if ( $_POST['type'] === 'like' ) {
+  if ($_GET['action'] === 'vote_article') {
+    if ($_POST['type'] === 'like') {
       echo 'like';
       exit;
     }
 
-    if ( $_POST['type'] === 'dislike' ) {
+    if ($_POST['type'] === 'dislike') {
       echo 'dislike';
       exit;
     }
@@ -109,12 +109,12 @@ if( isset ( $_GET['action']) ) {
 
 
 
-  if ( $_GET['action'] === 'save_bookmark' ) {
+  if ($_GET['action'] === 'save_bookmark') {
     $page = $_POST['page'];
 
     $save = $_POST['save'];
 
-    if ( $save === 'true' ) {
+    if ($save === 'true') {
       // SAVE BOOKMARK
     } else {
       // REMOVE FROM BOOKMARKS
@@ -125,16 +125,19 @@ if( isset ( $_GET['action']) ) {
 
 
 
-  if ( $_GET['action'] === 'vote_battle' ) {
+  if ($_GET['action'] === 'vote_battle') {
 
-    if ( isset ( $_POST['vote'] ) ) {
+    if (isset($_POST['vote'])) {
       $vote = $_POST['vote'];
+      $battleId = $_GET['id'];
+
       // .... some action
     }
 
-    $percent = [30,45,14,1,0,33,100,23,21,14];
 
-    $rand = rand(0,9);
+    $percent = [30, 45, 14, 1, 0, 33, 100, 23, 21, 14];
+
+    $rand = rand(0, 9);
 
     echo json_encode([
       'firstPercent' => $percent[$rand]
@@ -146,9 +149,9 @@ if( isset ( $_GET['action']) ) {
 
 
 
-  if ( $_GET['action'] === 'save_profile' ) {
+  if ($_GET['action'] === 'save_profile') {
     ob_start();
-    require ( ABSPATH . 'template-parts/ajax_save_profile.php' );
+    require(ABSPATH . 'template-parts/ajax_save_profile.php');
     $save_profile = ob_get_clean();
 
     echo json_encode([
@@ -169,12 +172,12 @@ if( isset ( $_GET['action']) ) {
 
 
 
-  if( $_GET['action'] === 'begin_test' ) {
+  if ($_GET['action'] === 'begin_test') {
     $testId = $_POST['testId'];
 
-    if ( isset ( $_POST['testResult'] ) ) {
-      $testResult = json_decode ( $_POST['testResult'] );
-      require ( ABSPATH . 'template-parts/ajax_test_result.php' );
+    if (isset($_POST['testResult'])) {
+      $testResult = json_decode($_POST['testResult']);
+      require(ABSPATH . 'template-parts/ajax_test_result.php');
       exit;
     } else {
       echo json_encode([
@@ -208,20 +211,19 @@ if( isset ( $_GET['action']) ) {
         // ]
       ]);
     }
-
   }
 
 
 
 
-  if ( $_GET['action'] === 'js_quiz' ) {
+  if ($_GET['action'] === 'js_quiz') {
     $quizId = $_POST['quizId'];
 
-    if ( isset ( $_POST['quizResult'] ) ) {
+    if (isset($_POST['quizResult'])) {
       $trueAnswers = $_POST['quizResult'];
       $time = $_POST['time']; // 00:00:00
 
-      require ( ABSPATH . 'template-parts/ajax_quiz_result.php' );
+      require(ABSPATH . 'template-parts/ajax_quiz_result.php');
     } else {
       echo json_encode([
         [
@@ -239,10 +241,4 @@ if( isset ( $_GET['action']) ) {
       ]);
     }
   }
-
-
-
 }
-
-
-?>
