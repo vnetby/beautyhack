@@ -53,7 +53,8 @@ export class ArticlePage extends DOM {
 
 
   checkStickyMobile () {
-    let sticky = this.findFirst( '.socials-sticky', this.container );
+    let sticky = this.findFirst('.socials-sticky', this.container);
+    console.log(sticky);
     let endContainer = this.findFirst('.sticky-end-container', this.container );
     if ( !sticky ) return;
     if ( !endContainer ) return;

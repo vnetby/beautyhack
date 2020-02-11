@@ -2,6 +2,8 @@
 define('URL', 'http://beautyhack2.vnetby.net/');
 define('ABSPATH', realpath(dirname(__FILE__)) . '/');
 
+require('includes/functions.php');
+
 require('includes/class_svg_icons.php');
 $svg = new SvgIcons;
 
@@ -47,7 +49,7 @@ if (!isset($_GET['page'])) {
 
 <body data-mobile="576" data-tablet="992" data-desktop="1280">
   <?php
-  if ($page === 'home.php' || $page === 'list_of_articles.php' || $page === 'article.php' || $page === 'article2.php') {
+  if ($page === 'home.php' || $page === 'list_of_articles.php' || $page === 'article.php' || $page === 'article2.php' || $page === 'old_article.php') {
     require('template-parts/brand_site_background.php');
   }
   ?>

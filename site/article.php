@@ -2,7 +2,7 @@
 
   <div class="art-ajax-container" id="artAjaxContainer">
 
-    <div class="art-page" data-next="?page=article2" data-page-title="article 1">
+    <div class="art-page new-article" data-next="?page=article2" data-page-title="article 1">
 
       <?php
       require('template-parts/better_in_month.php');
@@ -17,7 +17,7 @@
           'publish' => 'Сегодня в 11:47 • 7 минут чтения',
           'tags'    => ['Красота', 'Стиль Жизни']
         ];
-        require ( 'template-parts/section_head.php' );
+        require('template-parts/section_head.php');
 
         ?>
       </div>
@@ -281,7 +281,7 @@
         <div class="container-fluid">
           <?php
           $hide_share = true;
-          require ('template-parts/art_footer.php');
+          require('template-parts/art_footer.php');
           ?>
         </div>
 
@@ -290,7 +290,7 @@
 
 
       <?php
-      require ('template-parts/read_also.php');
+      require('template-parts/read_also.php');
       ?>
 
 

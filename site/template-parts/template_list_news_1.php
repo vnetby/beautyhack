@@ -184,7 +184,7 @@ $banners = json_encode($banners);
   <div class="art-card-col">
     <div class="card">
 
-      <a href="#" class="thumb hover-overlay">
+      <a href="#videoCard4" class="thumb hover-overlay" data-fancybox>
         <img class="object-cover" src="<?= URL; ?>img/news-block-home/05.jpg" alt="как я две недели тестировала Achronim">
         <span class="card-date fs-xm">Сегодня в 11:47</span>
         <span class="play-ico white white">
@@ -216,6 +216,10 @@ $banners = json_encode($banners);
         </div>
 
       </div>
+    </div>
+
+    <div id="videoCard4" class="card-loop-video">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/6JnGBs88sL0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
   </div>
 
@@ -263,7 +267,7 @@ $banners = json_encode($banners);
   <div class="art-card-col">
     <div class="card">
 
-      <a href="#" class="thumb hover-overlay">
+      <a href="#videoCard6" class="thumb hover-overlay" data-fancybox>
         <img class="object-cover" src="<?= URL; ?>img/news-block-home/07.jpg" alt="как я две недели тестировала Achronim">
         <span class="card-date fs-xm">Сегодня в 11:47</span>
         <span class="play-ico white">
@@ -296,6 +300,11 @@ $banners = json_encode($banners);
 
       </div>
     </div>
+
+    <div id="videoCard6" class="card-loop-video">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/6JnGBs88sL0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
   </div>
 
 

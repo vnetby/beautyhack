@@ -2,7 +2,6 @@ import '@babel/polyfill';
 
 import '../css/main.less';
 
-
 window.BH = {};
 window.BH.mobile = document.body.dataset.mobile || 576;
 window.BH.tablet = document.body.dataset.tablet || 992;
@@ -60,6 +59,10 @@ import { AnimateClick } from './AnimateClick.js';
 
 import { artLoopBanners } from "./artLoopBanners";
 
+import { oldArtFullSliderNav } from "./fixOldArticleHTML/oldArtFullSliderNav.js";
+import { oldArtBigSlider } from "./fixOldArticleHTML/oldArtBigSlider.js";
+import { oldArtAuthorBlock } from "./fixOldArticleHTML/oldArtAuthorBlock.js";
+
 
 export const dynamicScripts = (container) => {
   objectFit(container);
@@ -77,11 +80,17 @@ export const dynamicScripts = (container) => {
   dismissModal(container);
   new FormValidate(container);
   artLoopBanners(container);
+
+
+  oldArtFullSliderNav(container);
+  oldArtBigSlider(container);
+  oldArtAuthorBlock(container);
 }
 
 
 
 export const staticScripts = () => {
+  // window.dom = new DOM;
   new Header();
   loginModal();
   subscribeModal();

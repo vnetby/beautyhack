@@ -3,11 +3,11 @@
   <div class="art-ajax-container" id="artAjaxContainer">
 
     <!-- <div class="art-page" data-page-title="article 2"> -->
-    <div class="art-page" data-next="?page=article" data-page-title="article 2">
+    <div class="art-page new-article" data-next="?page=article" data-page-title="article 2">
 
       <?php
-      if ( $isAjax ) {
-        ?>
+      if ($isAjax) {
+      ?>
         <div class="container-fluid display-mobile section mb-5">
           <div class="row">
             <div class="col-lg-12 banner">
@@ -27,7 +27,7 @@
             </a>
           </div>
         </div>
-        <?php
+      <?php
       }
       ?>
 
@@ -41,7 +41,7 @@
           'publish' => 'Сегодня в 11:47 • 7 минут чтения',
           'tags'    => ['Красота', 'Стиль Жизни']
         ];
-        require ( 'template-parts/section_head.php' );
+        require('template-parts/section_head.php');
 
         ?>
       </div>
@@ -128,7 +128,7 @@
         <div class="container-fluid">
           <?php
           $hide_share = true;
-          require ('template-parts/art_footer.php');
+          require('template-parts/art_footer.php');
           ?>
         </div>
 
