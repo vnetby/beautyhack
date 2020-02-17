@@ -1,16 +1,32 @@
 <?php
-$banners = [
-  ['link' => 'https://google.com', 'img' => URL . '/img/true_banners/banner_320_250.jpg']
-];
-$banners = json_encode($banners);
+// $banners = [
+//   ['link' => 'https://google.com', 'img' => URL . '/img/true_banners/banner_320_250.jpg']
+// ];
+// $banners = json_encode($banners);
 ?>
 
-<div class="row list-cards-row art-js-banners simple-preview" data-banners='<?= $banners; ?>'>
+<div class="row list-cards-row art-js-banners simple-preview">
   <!-- 
   template_list_news_2
  recommendation section
 -->
 
+  <div class="banner display-mobile col-lg-12 row-banner" data-index="0">
+    <div id="adriverBanner">
+      <a href='https://google.com' target="_blank">
+        <img src='/img/true_banners/banner_320_250.jpg' alt="preview image" />
+      </a>
+    </div>
+    <script>
+      // new adriver("adriverBanner", {
+      //   sid: 210980,
+      //   bt: 52,
+      //   bn: 2
+      // });
+    </script>
+  </div>
+
+  <!-- 0 -->
   <div class="art-card-col">
     <div class="card">
 
@@ -50,6 +66,7 @@ $banners = json_encode($banners);
   </div>
 
 
+  <!-- 1 -->
   <div class="art-card-col">
     <div class="card">
 
@@ -94,6 +111,7 @@ $banners = json_encode($banners);
   </div>
 
 
+  <!-- 2 -->
   <div class="art-card-col">
     <div class="card">
 
@@ -133,6 +151,7 @@ $banners = json_encode($banners);
   </div>
 
 
+  <!-- 3 -->
   <div class="art-card-col">
     <div class="card">
 
@@ -172,6 +191,7 @@ $banners = json_encode($banners);
   </div>
 
 
+  <!-- 4 -->
   <div class="art-card-col">
     <div class="card">
 
@@ -211,6 +231,8 @@ $banners = json_encode($banners);
   </div>
 
 
+
+  <!-- 5 -->
   <div class="art-card-col">
     <div class="card">
 

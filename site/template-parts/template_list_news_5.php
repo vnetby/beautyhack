@@ -1,21 +1,43 @@
 <?php
-$banners = [
-  ['link' => 'https://google.com', 'img' => URL . '/img/true_banners/banner_320_250.jpg'],
-  ['link' => 'https://google.com', 'img' => URL . '/img/true_banners/banner_300_600.jpg'],
-  ['link' => 'https://google.com', 'img' => URL . '/img/true_banners/banner_320_250.jpg'],
-  ['link' => 'https://google.com', 'img' => URL . '/img/true_banners/banner_550_150.jpg'],
-  ['link' => 'https://google.com', 'img' => URL . '/img/true_banners/banner_300_250.jpg']
-];
-$banners = json_encode($banners);
+// $banners = [
+//   ['link' => 'https://google.com', 'img' => URL . '/img/true_banners/banner_320_250.jpg'],
+//   ['link' => 'https://google.com', 'img' => URL . '/img/true_banners/banner_300_600.jpg'],
+//   ['link' => 'https://google.com', 'img' => URL . '/img/true_banners/banner_320_250.jpg'],
+//   ['link' => 'https://google.com', 'img' => URL . '/img/true_banners/banner_550_150.jpg'],
+//   ['link' => 'https://google.com', 'img' => URL . '/img/true_banners/banner_300_250.jpg']
+// ];
+// $banners = json_encode($banners);
 ?>
 
-<div class="row list-cards-row art-js-banners" data-banners='<?= $banners; ?>'>
+<!-- 
+if has banners add class "has-banner"
+else
+add class "no-banner" 
+-->
+<div class="row list-cards-row art-js-banners has-banner">
 
   <!-- 
   template_list_news_5
  list of articles page
 -->
 
+  <div class="banner display-mobile col-lg-12 row-banner" data-index="0">
+    <div id="adriverBanner">
+      <a href='https://google.com' target="_blank">
+        <img src='/img/true_banners/banner_320_250.jpg' alt="preview image" />
+      </a>
+    </div>
+    <script>
+      // new adriver("adriverBanner", {
+      //   sid: 210980,
+      //   bt: 52,
+      //   bn: 2
+      // });
+    </script>
+  </div>
+
+
+  <!-- 0 -->
   <div class="col-lg-8 col-sm-12 large">
 
     <div class="card">
@@ -66,6 +88,8 @@ $banners = json_encode($banners);
 
 
 
+
+  <!-- 1 -->
   <div class="art-card-col">
     <div class="card">
 
@@ -116,7 +140,7 @@ $banners = json_encode($banners);
 
 
 
-
+  <!-- 2 -->
   <div class="art-card-col">
     <div class="card">
 
@@ -165,6 +189,9 @@ $banners = json_encode($banners);
 
 
 
+
+
+  <!-- 3 -->
   <div class="art-card-col">
     <div class="card">
 
@@ -212,6 +239,31 @@ $banners = json_encode($banners);
   </div>
 
 
+
+
+
+  <div class="art-card-col display-desktop display-tablet vertical-banner" data-index="1">
+    <div class="card banner">
+      <div class="shadow-both">
+        <div id="adriverBanner2">
+          <a href="https://google.com" target="_blank" class="thumb mb-0 hover-overlay">
+            <img src="/img/true_banners/banner_300_600.jpg" alt="preview image" />
+          </a>
+        </div>
+      </div>
+    </div>
+    <script>
+      // new adriver("adriverBanner2", {
+      //   sid: 210980,
+      //   bt: 52,
+      //   bn: 2
+      // });
+    </script>
+  </div>
+
+
+
+  <!-- 4 -->
   <div class="art-card-col">
     <div class="card">
 
@@ -259,6 +311,29 @@ $banners = json_encode($banners);
   </div>
 
 
+
+
+
+  <div class="banner display-mobile col-lg-12 row-banner" data-index="2">
+    <div id="adriverBanner4">
+      <a href="https://google.com" target="_blank">
+        <img src="/img/true_banners/banner_320_250.jpg" alt="preview image" />
+      </a>
+    </div>
+    <script>
+      // new adriver("adriverBanner4", {
+      //   sid: 210980,
+      //   bt: 52,
+      //   bn: 2
+      // });
+    </script>
+  </div>
+
+
+
+
+
+  <!-- 5 -->
   <div class="art-card-col">
     <div class="card">
 
@@ -307,6 +382,9 @@ $banners = json_encode($banners);
 
 
 
+
+
+  <!-- 6 -->
   <div class="art-card-col">
     <div class="card">
 
@@ -357,6 +435,7 @@ $banners = json_encode($banners);
 
 
 
+  <!-- 7 -->
   <div class="art-card-col">
     <div class="card">
 
@@ -405,6 +484,9 @@ $banners = json_encode($banners);
 
 
 
+
+
+  <!-- 8 -->
   <div class="art-card-col">
     <div class="card">
 
@@ -452,6 +534,30 @@ $banners = json_encode($banners);
   </div>
 
 
+
+
+
+  <div class="col-lg-12 banner display-desktop display-tablet row-banner" data-index="3">
+    <div class="dashed-shadow">
+      <span class="shadow"></span>
+      <div id="adriverBanner3">
+        <a href="https://google.com">
+          <img src="/img/true_banners/banner_550_150.jpg" alt="preview image" />
+        </a>
+      </div>
+    </div>
+    <script>
+      // new adriver("adriverBanner3", {
+      //   sid: 210980,
+      //   bt: 52,
+      //   bn: 2
+      // });
+    </script>
+  </div>
+
+
+
+  <!-- 9 -->
   <div class="art-card-col">
     <div class="card">
 
@@ -501,6 +607,27 @@ $banners = json_encode($banners);
 
 
 
+  <div class="banner display-mobile col-lg-12 row-banner" data-index="4">
+    <div class="dashed-shadow">
+      <span class="shadow"></span>
+      <div id="adriverBanner3">
+        <a href="https://google.com">
+          <img src="/img/true_banners/banner_300_250.jpg" alt="preview image" />
+        </a>
+      </div>
+    </div>
+    <script>
+      // new adriver("adriverBanner3", {
+      //   sid: 210980,
+      //   bt: 52,
+      //   bn: 2
+      // });
+    </script>
+  </div>
+
+
+
+  <!-- 10 -->
   <div class="art-card-col">
     <div class="card">
 
@@ -551,7 +678,7 @@ $banners = json_encode($banners);
 
 
 
-
+  <!-- 11 -->
   <div class="art-card-col">
     <div class="card">
 
@@ -598,6 +725,10 @@ $banners = json_encode($banners);
     </div>
   </div>
 
+
+
+
+  <!-- 12 -->
   <div class="art-card-col">
     <div class="card">
 
@@ -644,6 +775,10 @@ $banners = json_encode($banners);
     </div>
   </div>
 
+
+
+
+  <!-- 13 -->
   <div class="art-card-col">
     <div class="card">
 
@@ -690,6 +825,10 @@ $banners = json_encode($banners);
     </div>
   </div>
 
+
+
+
+  <!-- 14 -->
   <div class="art-card-col">
     <div class="card">
 

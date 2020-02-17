@@ -1,9 +1,9 @@
 import { DOM } from "./DOM";
 import { React } from "./React";
 
-
-
 export const artLoopBanners = wrap => {
+  return;
+  
   let dom = new DOM;
 
   let container = dom.getContainer(wrap);
@@ -16,7 +16,7 @@ export const artLoopBanners = wrap => {
 
   sections.forEach(section => {
     init({ section, dom });
-  })
+  });
 
 }
 
@@ -100,14 +100,14 @@ const appendBanner = ({ section, index, src, card }) => {
 }
 
 const noBanner = ({ section, dom }) => {
-  dom.removeClass(section, 'has-banner');
-  dom.addClass(section, 'no-banner');
+  // dom.removeClass(section, 'has-banner');
+  // dom.addClass(section, 'no-banner');
 }
 
 
 const hasBanner = ({ section, dom }) => {
-  dom.removeClass(section, 'no-banner');
-  dom.addClass(section, 'has-banner');
+  // dom.removeClass(section, 'no-banner');
+  // dom.addClass(section, 'has-banner');
 }
 
 

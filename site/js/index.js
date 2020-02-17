@@ -55,9 +55,9 @@ import { AjaxQuiz } from './AjaxQuiz.js';
 
 import { FormValidate } from './FormValidate.js';
 
-import { AnimateClick } from './AnimateClick.js';
+// import { AnimateClick } from './AnimateClick.js';
 
-import { artLoopBanners } from "./artLoopBanners";
+// import { artLoopBanners } from "./artLoopBanners";
 
 import { oldArtFullSliderNav } from "./fixOldArticleHTML/oldArtFullSliderNav.js";
 import { oldArtBigSlider } from "./fixOldArticleHTML/oldArtBigSlider.js";
@@ -79,7 +79,8 @@ export const dynamicScripts = (container) => {
   new AjaxQuiz(container);
   dismissModal(container);
   new FormValidate(container);
-  artLoopBanners(container);
+
+  // artLoopBanners(container);
 
 
   oldArtFullSliderNav(container);
