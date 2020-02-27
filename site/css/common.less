@@ -1074,10 +1074,7 @@ svg {
   width: 100%;
   img {
     max-width: 100%;
-  }
-
-  & > * {
-    // display: block;
+    height: auto !important;
   }
 }
 
@@ -2769,4 +2766,19 @@ figure {
       }
     }
   }
+}
+
+/*==============================================================
+*												HIDDEN ELEMENTS
+=============================================================== */
+.header {
+  #openSearchBtn,
+  .profile-controls,
+  .profile-menu-link,
+  #subscribeContainer {
+    display: none !important;
+  }
+}
+.subscribe-footer {
+  display: none !important;
 }

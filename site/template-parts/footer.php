@@ -73,7 +73,7 @@
         </div>
 
 
-        <div class="foot-block foot-row">
+        <div class="foot-block foot-row subscribe-footer">
           <h5 class="foot-title fs-x-l">Подписка на нашу рассылку</h5>
           <div class="btn-row center">
             <a href="#subscribeModal" data-fancybox class="btn black fs-m subscribe-link">Подписаться</a>

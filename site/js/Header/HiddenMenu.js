@@ -2,7 +2,7 @@ import { DOM } from '../DOM/index.js';
 
 export class HiddenMenu extends DOM {
 
-  constructor({hiddenEvent, currentMarkup}) {
+  constructor({ hiddenEvent, currentMarkup }) {
     super();
     this.getElements();
     this.hiddenEvent = hiddenEvent;
@@ -16,13 +16,13 @@ export class HiddenMenu extends DOM {
 
 
   getElements() {
-    this.el              = {};
-    this.el.btn          = this.find('#openHiddenMenuBtn');
-    this.el.hiddenMenu   = this.find('#hiddenMenu');
+    this.el = {};
+    this.el.btn = this.find('#openHiddenMenuBtn');
+    this.el.hiddenMenu = this.find('#hiddenMenu');
     this.el.navContainer = this.find('#navContainer');
-    this.el.mainContent  = this.find('#mainContent');
-    this.el.overlay      = this.create('div', 'mobile-menu-overlay');
-    this.el.main         = this.findFirst('#main');
+    this.el.mainContent = this.find('#mainContent');
+    this.el.overlay = this.create('div', 'mobile-menu-overlay');
+    this.el.main = this.findFirst('#main');
   }
 
 
@@ -36,22 +36,22 @@ export class HiddenMenu extends DOM {
     });
   }
 
-  switchHiddenMenu( compare = false ) {
+  switchHiddenMenu(compare = false) {
     let check;
-    if ( !compare ) {
-      if ( !this.state.visibleMenu ) {
+    if (!compare) {
+      if (!this.state.visibleMenu) {
         check = true;
       } else {
         check = false;
       }
     } else {
-      if ( !this.state.visibleMenu ) {
+      if (!this.state.visibleMenu) {
         check = false;
       } else {
         check = true;
       }
     }
-    if ( check ) {
+    if (check) {
       this.showHiddenMenu();
     } else {
       this.closeHiddenMenu();
@@ -61,12 +61,12 @@ export class HiddenMenu extends DOM {
 
 
   showHiddenMenu() {
-    this.dispath( this.el.hiddenMenu, this.hiddenEvent );
+    this.dispath(this.el.hiddenMenu, this.hiddenEvent);
 
-    this.addClass( this.el.btn, 'is-active' );
+    this.addClass(this.el.btn, 'is-active');
     this.addClass(this.el.hiddenMenu, 'visible');
 
-    if ( this.currentMarkup === 'desktop' ) {
+    if (this.currentMarkup === 'desktop') {
       this.showHiddenMenuDesktop();
     } else {
       this.showHiddenMenuMobile();
@@ -74,24 +74,24 @@ export class HiddenMenu extends DOM {
     this.state.visibleMenu = true;
   }
 
-  showHiddenMenuDesktop () {
+  showHiddenMenuDesktop() {
     this.slideDown(this.el.hiddenMenu);
   }
 
-  showHiddenMenuMobile () {
+  showHiddenMenuMobile() {
     document.body.style.overflow = 'hidden';
     this.addOverlay();
   }
 
-  addOverlay () {
-    if ( !this.el.mainContent.querySelector('.mobile-menu-overlay') ) {
-      this.el.main.appendChild( this.el.overlay );
+  addOverlay() {
+    if (!this.el.mainContent.querySelector('.mobile-menu-overlay')) {
+      this.el.main.appendChild(this.el.overlay);
     }
   }
 
   removeOverlay() {
     let overlay = this.el.main.querySelector('.mobile-menu-overlay');
-    if ( overlay ) {
+    if (overlay) {
       overlay.parentNode.removeChild(overlay);
     }
   }
@@ -101,7 +101,7 @@ export class HiddenMenu extends DOM {
   closeHiddenMenu() {
     this.removeClass(this.el.btn, 'is-active');
     this.removeClass(this.el.hiddenMenu, 'visible');
-    if ( this.currentMarkup === 'desktop' ) {
+    if (this.currentMarkup === 'desktop') {
       this.closeHiddenMenuDesktop();
     } else {
       this.closeHiddenMenuMobile();
@@ -109,32 +109,32 @@ export class HiddenMenu extends DOM {
     this.state.visibleMenu = false;
   }
 
-  closeHiddenMenuDesktop () {
+  closeHiddenMenuDesktop() {
     this.slideUp(this.el.hiddenMenu);
   }
 
-  closeHiddenMenuMobile () {
+  closeHiddenMenuMobile() {
     document.body.style.overflow = 'auto';
     this.removeOverlay();
   }
 
 
-  stopPropagationClick () {
-    this.on(this.el.hiddenMenu, 'click', (el, e ) => e.stopPropagation() );
+  stopPropagationClick() {
+    this.on(this.el.hiddenMenu, 'click', (el, e) => e.stopPropagation());
   }
 
 
 
-  onWindowResize  ( currentMarkup ) {
+  onWindowResize(currentMarkup) {
     this.currentMarkup = currentMarkup;
 
-    if ( this.currentMarkup !== this.prevMarkup && this.prevMarkup ) {
-      if ( this.currentMarkup === 'desktop' ) {
+    if (this.currentMarkup !== this.prevMarkup && this.prevMarkup) {
+      if (this.currentMarkup === 'desktop') {
         this.removeOverlay();
       } else {
         this.el.hiddenMenu.removeAttribute('style');
       }
-      this.switchHiddenMenu( true );
+      this.switchHiddenMenu(true);
       this.prevMarkup = this.currentMarkup;
     } else {
       this.prevMarkup = this.currentMarkup;

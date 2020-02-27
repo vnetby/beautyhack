@@ -9,7 +9,8 @@ export class DOM {
   }
 
 
-  removeClass(el, className ) {
+  removeClass(el, className) {
+    if (!el) return false;
     let allClassNames = this.getClassName( className );
     allClassNames.forEach ( name => {
       if ( el.classList.contains(name)) el.classList.remove(name);
@@ -75,7 +76,8 @@ export class DOM {
 
 
 
-  slideUp (el, display = 'none', transition = 300 ) {
+  slideUp(el, display = 'none', transition = 300) {
+    if (!el) return false;
     el.style.height = el.offsetHeight + 'px';
     setTimeout( () => {
       el.style.opacity = '0';
@@ -218,7 +220,8 @@ export class DOM {
 
 
 
-  on (el, e, callback) {
+  on(el, e, callback) {
+    if (!el) return false;
     el.addEventListener(e, callback.bind(this, el));
   }
 

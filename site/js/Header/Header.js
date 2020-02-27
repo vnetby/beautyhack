@@ -8,8 +8,8 @@ import { Search } from './Search.js';
 
 
 export class Header extends DOM {
-  constructor( sets ) {
-    super ();
+  constructor(sets) {
+    super();
     this.hiddenEvent = 'closeHiddenElemets';
 
     this.mobilePoint = BH[BH.headerBreakpoint] || BH.mobile;
@@ -21,15 +21,15 @@ export class Header extends DOM {
     this.addHeaderMinHeight();
 
     this.fixedNav = new FixedNav({
-      nav       : '#fixedOnScrollMenu',
-      replace   : false,
+      nav: '#fixedOnScrollMenu',
+      replace: false,
       fixedClass: 'is-fixed'
     });
 
 
 
-    this.hiddenMenu = new HiddenMenu( { hiddenEvent: this.hiddenEvent, currentMarkup: this.currentMarkup } );
-    this.search = new Search( { hiddenEvent: this.hiddenEvent, currentMarkup: this.currentMarkup } );
+    this.hiddenMenu = new HiddenMenu({ hiddenEvent: this.hiddenEvent, currentMarkup: this.currentMarkup });
+    this.search = new Search({ hiddenEvent: this.hiddenEvent, currentMarkup: this.currentMarkup });
 
     this.initHideOnEvent();
 
@@ -84,7 +84,7 @@ export class Header extends DOM {
 
 
 
-  addHeaderMinHeight () {
+  addHeaderMinHeight() {
     let height = this.el.navContainer.offsetHeight + 'px';
     this.el.header.style.minHeight = height;
     window.addEventListener('resize', e => {
@@ -97,11 +97,11 @@ export class Header extends DOM {
 
   initHideOnEvent() {
 
-    this.on(this.search.el.searchContainer,this.hiddenEvent, () => {
+    this.on(this.search.el.searchContainer, this.hiddenEvent, () => {
       this.hiddenMenu.closeHiddenMenu();
     });
 
-    this.on(this.hiddenMenu.el.hiddenMenu,this.hiddenEvent, () => {
+    this.on(this.hiddenMenu.el.hiddenMenu, this.hiddenEvent, () => {
       this.search.closeSearchContainer();
     });
 
@@ -109,18 +109,18 @@ export class Header extends DOM {
 
 
   closeAllElements() {
-    if ( this.hiddenMenu.state.visibleMenu ) {
+    if (this.hiddenMenu.state && this.hiddenMenu.state.visibleMenu) {
       this.hiddenMenu.closeHiddenMenu();
     }
-    if ( this.search.state.visible ) {
+    if (this.search.state && this.search.state.visible) {
       this.search.closeSearchContainer();
     }
 
   }
 
-  initHideOnEscPress () {
+  initHideOnEscPress() {
     window.addEventListener('keydown', e => {
-      if ( e.code === 'Escape' ) {
+      if (e.code === 'Escape') {
         this.closeAllElements();
       }
     });
@@ -135,13 +135,13 @@ export class Header extends DOM {
 
 
   initMobileMarkup() {
-    if ( window.innerWidth <= this.mobilePoint ) {
+    if (window.innerWidth <= this.mobilePoint) {
       this.addMobileMarkup();
     }
     this.hiddenMenu.onWindowResize(this.currentMarkup);
     this.search.onWindowResize(this.currentMarkup);
     window.addEventListener('resize', e => {
-      if ( window.innerWidth <= this.mobilePoint ) {
+      if (window.innerWidth <= this.mobilePoint) {
         this.addMobileMarkup();
       } else {
         this.addDesktopMarkup();
@@ -155,8 +155,12 @@ export class Header extends DOM {
   addMobileMarkup() {
     if (this.currentMarkup === 'desktop') {
       this.append(this.el.logo, this.el.topNavCol);
-      this.el.subscribeContainer.parentNode.insertBefore(this.el.topMenu, this.el.subscribeContainer);
-      this.el.subscribeContainer.parentNode.insertBefore(this.el.socialLinks, this.el.subscribeContainer)
+      if (this.el.subscribeContainer) {
+        this.el.subscribeContainer.parentNode.insertBefore(this.el.topMenu, this.el.subscribeContainer);
+      }
+      if (this.el.subscribeContainer) {
+        this.el.subscribeContainer.parentNode.insertBefore(this.el.socialLinks, this.el.subscribeContainer)
+      }
       this.currentMarkup = 'mobile';
     }
   }
@@ -173,10 +177,10 @@ export class Header extends DOM {
 
 
   initCloseTagsMenu() {
-    this.el.closeTagsBtns.forEach( btn => {
+    this.el.closeTagsBtns.forEach(btn => {
       btn.addEventListener('click', e => {
         e.preventDefault();
-        if ( this.currentMarkup === 'mobile' ) {
+        if (this.currentMarkup === 'mobile') {
           this.closeTagsMenu();
         }
       })
@@ -185,11 +189,11 @@ export class Header extends DOM {
 
 
 
-  initOpenTagsMenu () {
-    this.el.openTagsBtns.forEach( btn => {
+  initOpenTagsMenu() {
+    this.el.openTagsBtns.forEach(btn => {
       btn.addEventListener('click', e => {
         e.preventDefault();
-        if ( this.currentMarkup === 'mobile' ) {
+        if (this.currentMarkup === 'mobile') {
           this.openTagsMenu();
         }
       })
@@ -204,7 +208,7 @@ export class Header extends DOM {
   }
 
 
-  openTagsMenu () {
+  openTagsMenu() {
     this.addClass(this.el.tagsMenu, 'visible-menu');
     this.addClass(this.el.hiddenTopMenuContainer, 'hidden-menu');
     this.addClass(this.el.socialLinks, 'hidden-menu');
