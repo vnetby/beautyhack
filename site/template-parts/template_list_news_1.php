@@ -22,18 +22,23 @@ add class "no-banner"
 -->
 
   <div class="banner display-mobile col-lg-12 row-banner" data-index="0">
-    <div id="adriverBanner">
+    <!-- <div id="adriverBanner">
       <a href='https://google.com' target="_blank">
         <img src='/img/true_banners/banner_320_250.jpg' alt="preview image" />
       </a>
-    </div>
-    <script>
-      // new adriver("adriverBanner", {
-      //   sid: 210980,
-      //   bt: 52,
-      //   bn: 2
-      // });
+    </div> -->
+    <!--  AdRiver code START. Type:AjaxJS Site: beauty BN:8 -->
+    <div id="adriver_banner_1143170111"></div>
+    <script type="text/javascript">
+      new adriver("adriver_banner_1143170111", {
+        sid: 210980,
+        bt: 52,
+        bn: 8
+      });
     </script>
+
+    <!--  AdRiver code END  -->
+
   </div>
 
   <!-- 0 -->
@@ -204,24 +209,41 @@ add class "no-banner"
 
 
 
-
-  <div class="art-card-col display-desktop display-tablet vertical-banner" data-index="1">
+  <!-- display-desktop display-tablet -->
+  <div class="art-card-col  vertical-banner" data-index="1">
     <div class="card banner">
-      <div class="shadow-both">
-        <div id="adriverBanner2">
+      <div class="shadow-both display-desktop">
+        <!-- <div id="adriverBanner2">
           <a href="https://google.com" target="_blank" class="thumb mb-0 hover-overlay">
             <img src="/img/true_banners/banner_300_600.jpg" alt="preview image" />
           </a>
-        </div>
+        </div> -->
+        <!--  AdRiver code START. Type:AjaxJS Site: beauty BN:3 -->
+        <div id="adriver_banner_1611279608"></div>
+        <script type="text/javascript">
+          new adriver("adriver_banner_1611279608", {
+            sid: 210980,
+            bt: 52,
+            bn: 3
+          });
+        </script>
+        <!--  AdRiver code END  -->
+      </div>
+      <div class="shadow-both display-tablet">
+        <!--  AdRiver code START. Type:AjaxJS Site: beauty BN:7 -->
+        <div id="adriver_banner_1511748259"></div>
+        <script type="text/javascript">
+          new adriver("adriver_banner_1511748259", {
+            sid: 210980,
+            bt: 52,
+            bn: 7
+          });
+        </script>
+
+        <!--  AdRiver code END  -->
+
       </div>
     </div>
-    <script>
-      // new adriver("adriverBanner2", {
-      //   sid: 210980,
-      //   bt: 52,
-      //   bn: 2
-      // });
-    </script>
   </div>
 
 
@@ -231,7 +253,7 @@ add class "no-banner"
   <div class="art-card-col">
     <div class="card">
 
-      <a href="#videoCard4" class="thumb hover-overlay" data-fancybox>
+      <a href="https://youtu.be/VVwfRAwTUxw" class="thumb hover-overlay" data-fancybox>
         <img class="object-cover" src="<?= URL; ?>img/news-block-home/05.jpg" alt="как я две недели тестировала Achronim">
         <span class="card-date fs-xm">Сегодня в 11:47</span>
         <span class="play-ico white white">
@@ -254,7 +276,7 @@ add class "no-banner"
       </div>
 
       <div class="card-content">
-        <a href="#" class="card-title fs-xl">
+        <a href="https://youtu.be/VVwfRAwTUxw" class="card-title fs-xl" data-fancybox>
           13 фраз, которые нельзя говорить ребенку
         </a>
 
@@ -265,27 +287,29 @@ add class "no-banner"
       </div>
     </div>
 
-    <div id="videoCard4" class="card-loop-video">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/6JnGBs88sL0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
   </div>
 
 
 
 
   <div class="banner display-mobile col-lg-12 row-banner" data-index="2">
-    <div id="adriverBanner4">
+    <!-- <div id="adriverBanner4">
       <a href="https://google.com" target="_blank">
         <img src="/img/true_banners/banner_320_250.jpg" alt="preview image" />
       </a>
-    </div>
-    <script>
-      // new adriver("adriverBanner4", {
-      //   sid: 210980,
-      //   bt: 52,
-      //   bn: 2
-      // });
+    </div> -->
+    <!--  AdRiver code START. Type:AjaxJS Site: beauty BN:9 -->
+    <div id="adriver_banner_1097999900"></div>
+    <script type="text/javascript">
+      new adriver("adriver_banner_1097999900", {
+        sid: 210980,
+        bt: 52,
+        bn: 9
+      });
     </script>
+
+    <!--  AdRiver code END  -->
+
   </div>
 
 
@@ -461,21 +485,42 @@ add class "no-banner"
 
 
   <div class="col-lg-12 banner display-desktop display-tablet row-banner" data-index="3">
-    <div class="dashed-shadow">
+    <div class="dashed-shadow display-desktop">
       <span class="shadow"></span>
-      <div id="adriverBanner3">
+      <!-- <div id="adriverBanner3">
         <a href="https://google.com">
           <img src="/img/true_banners/banner_550_150.jpg" alt="preview image" />
         </a>
-      </div>
+      </div> -->
+      <!--  AdRiver code START. Type:AjaxJS Site: beauty BN:10 -->
+      <div id="adriver_banner_674925246"></div>
+      <script type="text/javascript">
+        new adriver("adriver_banner_674925246", {
+          sid: 210980,
+          bt: 52,
+          bn: 10
+        });
+      </script>
+
+      <!--  AdRiver code END  -->
+
     </div>
-    <script>
-      // new adriver("adriverBanner3", {
-      //   sid: 210980,
-      //   bt: 52,
-      //   bn: 2
-      // });
-    </script>
+
+    <div class="dashed-shadow display-tablet">
+      <span class="shadow"></span>
+      <!--  AdRiver code START. Type:AjaxJS Site: beauty BN:11 -->
+      <div id="adriver_banner_851242586"></div>
+      <script type="text/javascript">
+        new adriver("adriver_banner_851242586", {
+          sid: 210980,
+          bt: 52,
+          bn: 11
+        });
+      </script>
+
+      <!--  AdRiver code END  -->
+
+    </div>
   </div>
 
 
@@ -525,19 +570,24 @@ add class "no-banner"
   <div class="banner display-mobile col-lg-12 row-banner" data-index="4">
     <div class="dashed-shadow">
       <span class="shadow"></span>
-      <div id="adriverBanner3">
+      <!-- <div id="adriverBanner3">
         <a href="https://google.com">
           <img src="/img/true_banners/banner_300_250.jpg" alt="preview image" />
         </a>
-      </div>
+      </div> -->
+      <!--  AdRiver code START. Type:AjaxJS Site: beauty BN:12 -->
+      <div id="adriver_banner_423644461"></div>
+      <script type="text/javascript">
+        new adriver("adriver_banner_423644461", {
+          sid: 210980,
+          bt: 52,
+          bn: 12
+        });
+      </script>
+
+      <!--  AdRiver code END  -->
+
     </div>
-    <script>
-      // new adriver("adriverBanner3", {
-      //   sid: 210980,
-      //   bt: 52,
-      //   bn: 2
-      // });
-    </script>
   </div>
 
 

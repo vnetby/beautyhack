@@ -45,6 +45,7 @@ if (!isset($_GET['page'])) {
       SRC: '<?= URL; ?>'
     }
   </script>
+  <script src="<?= URL; ?>js/adriver.core.2.js"></script>
 </head>
 
 <body data-mobile="576" data-tablet="992" data-desktop="1280">

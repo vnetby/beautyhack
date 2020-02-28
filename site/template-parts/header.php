@@ -3,7 +3,19 @@
   <div class="container-fluid big-banner-container desktop">
     <div class="row big-banner-row">
       <div class="col-12 big-banner">
-        <img src="<?= URL; ?>img/big-banner.jpg" alt="banner">
+        <!-- <img src="<?= URL; ?>img/big-banner.jpg" alt="banner"> -->
+        <!--  AdRiver code START. Type:AjaxJS Site: beauty BN:2 -->
+        <div id="adriver_banner_427261417"></div>
+        <script type="text/javascript">
+          new adriver("adriver_banner_427261417", {
+            sid: 210980,
+            bt: 52,
+            bn: 2
+          });
+        </script>
+
+        <!--  AdRiver code END  -->
+
       </div>
     </div>
   </div>
