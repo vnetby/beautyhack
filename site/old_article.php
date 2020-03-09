@@ -4,7 +4,8 @@ $artId = 0;
 
 
 $arts = [
-  "https://new.beautyhack.ru/testy/test-speshite-li-vy-zhit"
+  "https://new.beautyhack.ru/victoriny/viktorina-ugaday-kto-iz-zvezd-s-nakladnoy-chelkoy",
+  // "https://new.beautyhack.ru/testy/test-speshite-li-vy-zhit",
   // 'https://new.beautyhack.ru//krasota/kosmetichka-zvezdy-lyubimye-sredstva-lizy-chepel',
   // 'https://new.beautyhack.ru/telo/fitnes-gid/testovaya-statya',
   // 'https://new.beautyhack.ru/krasota/uhod/kak-nanosit-krem-chtoby-zabyt-o-kosmetologe',
@@ -42,7 +43,6 @@ $artHTML = get_old_art_content($arts[$artId]);
         require('template-parts/section_head.php');
         ?>
       </div>
-
       <?php
 
       // echo $arts[$artId] . ' => ' . $artId;

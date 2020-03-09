@@ -66,6 +66,7 @@ import { oldArtFixBanner } from "./fixOldArticleHTML/oldArtFixBanner";
 import { oldArtBlockquote } from "./fixOldArticleHTML/oldArtBlockquote";
 import { oldArtRemoveUnusedElements } from "./fixOldArticleHTML/oldArtRemoveUnusedElements";
 import { oldArtFixTest } from "./fixOldArticleHTML/oldArtFixTest";
+import { oldArtFixQuiz } from "./fixOldArticleHTML/oldArtFixQuiz";
 
 
 export const dynamicScripts = (container) => {
@@ -94,6 +95,7 @@ export const dynamicScripts = (container) => {
   oldArtBlockquote(container);
   oldArtRemoveUnusedElements(container);
   oldArtFixTest(container);
+  oldArtFixQuiz(container);
 }
 
 

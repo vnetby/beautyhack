@@ -1,7 +1,7 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 
-define('URL', 'https://beautyhack2.dev.vnetby.net/');
+define('URL', 'http://beautyhack.t.vnetby.net/');
 define('ABSPATH', realpath(dirname(__FILE__)) . '/');
 
 require('includes/functions.php');
