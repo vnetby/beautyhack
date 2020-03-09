@@ -22,7 +22,7 @@
             Какой оттенок блонда Гвинет Пэлтроу вам нравится больше?
           </a>
         </h2>
-        <div class="battle-container js-battle has-preloader" data-ajax="/_request.php?action=vote_battle&id=212">
+        <div class="battle-container js-battle has-preloader" data-ajax="/_request.php?action=vote_battle&id=212" data-id="212">
           <div class="row battle-row">
             <div class="vs-wrap">
               <span class="vs">VS</span>

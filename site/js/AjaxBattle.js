@@ -46,6 +46,56 @@ export class AjaxBattle extends DOM {
     }
 
     this.initSelectComp();
+
+    this.checkLocalStorage();
+  }
+
+
+
+
+  checkLocalStorage() {
+    let id = this.container.dataset.id;
+    if (!id) return;
+    id = parseInt(id);
+
+    let local = window.localStorage.getItem('battleVote');
+    local = local ? JSON.parse(local) : {};
+
+    for (let key in local) {
+      if (parseInt(key) === id) {
+        this.setVoteFromLocal(local[key]);
+        return;
+      }
+    }
+    return;
+  }
+
+
+
+
+  setLocalStorage(vote) {
+    let id = this.container.dataset.id;
+    if (!id) return;
+
+    let local = window.localStorage.getItem('battleVote');
+    local = local ? JSON.parse(local) : {};
+
+    local[id] = vote;
+
+    local = JSON.stringify(local);
+
+    window.localStorage.setItem('battleVote', local);
+  }
+
+
+
+  setVoteFromLocal(vote) {
+    if (vote === 1) {
+      this.dispath(this.firstComp, 'click');
+    } else {
+      this.dispath(this.secondComp, 'click');
+    }
+    this.vote();
   }
 
 
@@ -120,10 +170,11 @@ export class AjaxBattle extends DOM {
         this.addProgress();
         this.setProgress();
         this.removePreloader(this.container);
+        this.setLocalStorage(this.selected);
         if (this.tryFinish(obj)) {
           return;
         }
-        this.initMonitoringVote();
+        // this.initMonitoringVote();
       });
   }
 

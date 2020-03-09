@@ -1,5 +1,7 @@
 <?php
-define('URL', 'http://beautyhack2.vnetby.net/');
+header("Access-Control-Allow-Origin: *");
+
+define('URL', 'https://beautyhack2.dev.vnetby.net/');
 define('ABSPATH', realpath(dirname(__FILE__)) . '/');
 
 require('includes/functions.php');
@@ -71,6 +73,7 @@ if (!isset($_GET['page'])) {
   ?>
   <script src="<?= URL; ?>assets/assets.min.js"></script>
   <script src="<?= URL; ?>js/main.min.js"></script>
+  <!-- <script src="assets/templates/new_design/js/main.min.js"></script> -->
 
 </body>
 

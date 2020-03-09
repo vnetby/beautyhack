@@ -1,17 +1,16 @@
 <?php
-
 function get_old_art_content($artUrl)
 {
   $artBaseUrl = 'https://new.beautyhack.ru/';
-
   $content = file_get_contents($artUrl);
-
+  $content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
   $dom = new DOMDocument();
+
+  libxml_use_internal_errors(true);
 
   $dom->loadHTML('<?xml encoding="utf-8" ?>' . $content);
 
   $images = $dom->getElementsByTagName('img');
-
   foreach ($images as $img) {
     $img->setAttribute('src', $artBaseUrl . $img->getAttribute('src'));
   }
@@ -25,12 +24,11 @@ function get_old_art_content($artUrl)
     }
   }
 
+  $finder = new DomXPath($dom);
+  $classname = "art-body";
+  $nodes = $finder->query("//*[contains(concat(' ', normalize-space(@class), ' '), ' $classname ')]");
 
-  $articles = $dom->getElementsByTagName('article');
+  $art = $nodes->item(0);
 
-  $art = $articles->item(0);
-
-  $artHTML =  $dom->saveHTML($art);
-
-  return $artHTML;
+  return $dom->saveHTML($art);
 }

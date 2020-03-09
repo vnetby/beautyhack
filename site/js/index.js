@@ -62,6 +62,10 @@ import { FormValidate } from './FormValidate.js';
 import { oldArtFullSliderNav } from "./fixOldArticleHTML/oldArtFullSliderNav.js";
 import { oldArtBigSlider } from "./fixOldArticleHTML/oldArtBigSlider.js";
 import { oldArtAuthorBlock } from "./fixOldArticleHTML/oldArtAuthorBlock.js";
+import { oldArtFixBanner } from "./fixOldArticleHTML/oldArtFixBanner";
+import { oldArtBlockquote } from "./fixOldArticleHTML/oldArtBlockquote";
+import { oldArtRemoveUnusedElements } from "./fixOldArticleHTML/oldArtRemoveUnusedElements";
+import { oldArtFixTest } from "./fixOldArticleHTML/oldArtFixTest";
 
 
 export const dynamicScripts = (container) => {
@@ -86,6 +90,10 @@ export const dynamicScripts = (container) => {
   oldArtFullSliderNav(container);
   oldArtBigSlider(container);
   oldArtAuthorBlock(container);
+  oldArtFixBanner(container);
+  oldArtBlockquote(container);
+  oldArtRemoveUnusedElements(container);
+  oldArtFixTest(container);
 }
 
 
