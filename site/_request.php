@@ -218,7 +218,7 @@ if (isset($_GET['action'])) {
 
   if ($_GET['action'] === 'js_quiz') {
 
-    print_r ($_POST);
+    print_r ($_GET);
 
     exit;
     $quizId = $_POST['quizId'];

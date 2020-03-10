@@ -73,8 +73,6 @@ if (!isset($_GET['page'])) {
   ?>
   <script src="<?= URL; ?>assets/assets.min.js"></script>
   <script src="<?= URL; ?>js/main.min.js"></script>
-  <!-- <script src="assets/templates/new_design/js/main.min.js"></script> -->
-
 </body>
 
 </html>

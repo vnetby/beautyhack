@@ -424,7 +424,7 @@ const finishTest = ({ els, data }) => {
     sendResult({ els, data })
       .then(res => {
         console.log(res);
-        window.location.search = '?userid=' + data.modxUserId;
+        // window.location.search = '?userid=' + data.modxUserId;
       });
 
     // let fakeRespone = { status: '{"status": [{"name":"Гость","score":"9","seconds":"43"},{"name":"Гость","score":"9","seconds":"52"},{"name":"Гость","score":"9","seconds":"61"},{"name":"Гость","score":"9","seconds":"63"},{"name":"Гость","score":"9","seconds":"63"}]}' };
@@ -441,13 +441,16 @@ const sendResult = ({ els, data }) => {
   return new Promise((resolve, reject) => {
 
     let http = new XMLHttpRequest();
-    http.open('POST', RESULT_AJAX_URL);
-    console.log(RESULT_AJAX_URL);
+
+    let requesturl = RESULT_AJAX_URL + '?name=' + encodeURIComponent(data.userName) + '&quizID=' + encodeURIComponent(data.quizID) + '&modxuserid=' + encodeURIComponent(data.modxUserId) + '&score=' + encodeURIComponent(data.trueAnswers) + '&seconds=' + encodeURIComponent(data.timer.inSeconds) + '&totalscore=' + encodeURIComponent(data.total) + '&method=update&special=ofjshfsgufdirhfewgwe37gefhurqv3';
+
+    http.open('GET', requesturl);
+
+    console.log(requesturl);
+
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-    let requestStr = 'name=' + encodeURIComponent(data.userName) + '&quizID=' + encodeURIComponent(data.quizID) + '&modxuserid=' + encodeURIComponent(data.modxUserId) + '&score=' + encodeURIComponent(data.trueAnswers) + '&seconds=' + encodeURIComponent(data.timer.inSeconds) + '&totalscore=' + encodeURIComponent(data.total) + '&method=update&special=ofjshfsgufdirhfewgwe37gefhurqv3';
-    console.log(requestStr);
-    http.send(requestStr);
+    http.send();
 
     http.onreadystatechange = () => {
       if (http.readyState === 4 && http.status === 200) {
