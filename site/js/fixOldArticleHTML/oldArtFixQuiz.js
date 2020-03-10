@@ -2,6 +2,8 @@ import { DOM } from "../DOM/DOM";
 let dom = new DOM;
 import { React } from "../React";
 
+// const RESULT_AJAX_URL = '/_request.php?action=js_quiz';
+const RESULT_AJAX_URL = '/assets/ajax/quiz_v2_ajax.php';
 
 export const oldArtFixQuiz = wrap => {
   let container = dom.getContainer(wrap);
@@ -177,17 +179,56 @@ const init = ({ art, container }) => {
 
 
   let els = {};
-  getEls({ els, container });
+  getEls({ els, container: wrap });
+
+  loadImages({ els, data });
+
+  data.userName = 'someName';
+  data.quizID = 'someQuizInd';
+  data.modxUserId = 'modxUserId';
+
+  checkUserLoginData({ els, data });
 
   data.timer = {};
   data.timer.hours = 0;
   data.timer.min = 0;
   data.timer.sec = 0;
+  data.timer.inSeconds = 0;
   data.timer.el = createTimer({ data });
 
   data.trueAnswers = 0;
 
   initQuiz({ els, data });
+}
+
+
+
+
+const checkUserLoginData = ({ els, data }) => {
+  let isLogin;
+
+  if (data.quiz_authorization) {
+    isLogin = false;
+  } else {
+    isLogin = true;
+  }
+
+  // if ($('.top_nav .welc').length > 0) {
+  //   isLogin = true;
+  //   data.userName = $('.top_nav .welc span').html().split(' ');
+  //   data.userName = userName[1];
+  // } else {
+  //   data.userName = 'Гость';
+  // }
+
+  data.isUserLogin = true;
+}
+
+
+
+
+const loadImages = ({ els, data }) => {
+  data.questions = data.questions.map(item => { item.image = item.image ? <img src={item.image} alt="preview" /> : null; return item; });
 }
 
 
@@ -206,6 +247,9 @@ const createTimer = ({ data }) => {
 }
 
 
+
+
+
 const createHoursSpan = ({ data }) => {
   let el = document.createDocumentFragment();
   el.appendChild(<span className="hours">{data.timer.hours < 10 ? `0${data.timer.hours}` : data.timer.hours}</span>);
@@ -213,20 +257,38 @@ const createHoursSpan = ({ data }) => {
   return el;
 }
 
-// const createHoursSpan = ({ data }) => {
-//   let el = document.createDocumentFragment();
-//   el.appendChild(<span className="hours">{data.timer.hours < 10 ? `0${data.timer.hours}` : data.timer.hours}</span>);
-//   el.appendChild(<span className="div">:</span>);
-//   return el;
-// }
+
+
+
 
 
 const initQuiz = ({ els, data }) => {
   els.beginTest.addEventListener('click', e => {
     e.preventDefault();
-    startQuiz({ els, data });
+    if (data.isUserLogin) {
+      startQuiz({ els, data });
+    } else {
+      displayLoginForm({ els, data });
+    }
   });
 }
+
+
+
+
+
+const displayLoginForm = ({ els, data }) => {
+  let form = (
+    <div class="row">
+      <div className="col-lg-12 quiz-login-form">
+        Для продолжения вам необходимо <a href="register" class="pop_up_link" data-name="signup">зарегистрироваться</a> или <a href="login" class="pop_up_link" data-name="login">войти</a>.
+      </div>
+    </div>
+  );
+  els.testWrap.innerHTML = '';
+  els.testWrap.appendChild(form);
+}
+
 
 
 
@@ -254,7 +316,18 @@ const addQuestion = ({ els, data }) => {
   setCountQuest({ els, data });
   addQuestionTitle({ els, data });
   createAnswers({ els, data });
+  addImage({ els, data });
   initAnswers({ els, data });
+}
+
+
+
+
+const addImage = ({ els, data }) => {
+  let img = data.questions[data.current].image
+  if (!img) return;
+  els.imgCol.innerHTML = '';
+  els.imgCol.appendChild(img);
 }
 
 
@@ -277,14 +350,14 @@ const createAnswers = ({ els, data }) => {
   let div = document.createDocumentFragment();
   data.questions[data.current]['answers'].forEach((answer, i) => {
     let str = (
-      <div class="form-row test-radio">
+      <div className="form-row test-radio">
         <input type="radio" name={`questAnswer${data.current}`} id={`questAnswer${data.current}${i}`} />
         <label className="quest-answer-input" for={`questAnswer${data.current}${i}`} data-quest={data.current} data-answer={i}>
           {answer.text}
         </label>
-        <span class="ico wrong-ico test-ico">
+        <span className="ico wrong-ico test-ico">
         </span>
-        <span class="ico true-ico test-ico">
+        <span className="ico true-ico test-ico">
         </span>
       </div>
     );
@@ -342,6 +415,46 @@ const changeQuestion = ({ els, data }) => {
 const finishTest = ({ els, data }) => {
   data.finish = true;
   console.log(data);
+
+  if (!data.isUserLogin) {
+    displayLoginForm({ els, data });
+    return;
+  } else {
+    dom.addPreloader(els.testWrap);
+    sendResult({ els, data })
+      .then(res => {
+        console.log(res);
+        window.location.search = '?userid=' + data.modxUserId;
+      });
+
+    // let fakeRespone = { status: '{"status": [{"name":"Гость","score":"9","seconds":"43"},{"name":"Гость","score":"9","seconds":"52"},{"name":"Гость","score":"9","seconds":"61"},{"name":"Гость","score":"9","seconds":"63"},{"name":"Гость","score":"9","seconds":"63"}]}' };
+    // let status = JSON.parse(fakeRespone.status);
+    // let resHTML = createResultHTML({ els, data, status });
+  }
+
+}
+
+
+
+
+const sendResult = ({ els, data }) => {
+  return new Promise((resolve, reject) => {
+
+    let http = new XMLHttpRequest();
+    http.open('POST', RESULT_AJAX_URL);
+    console.log(RESULT_AJAX_URL);
+    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    let requestStr = 'name=' + encodeURIComponent(data.userName) + '&quizID=' + encodeURIComponent(data.quizID) + '&modxuserid=' + encodeURIComponent(data.modxUserId) + '&score=' + encodeURIComponent(data.trueAnswers) + '&seconds=' + encodeURIComponent(data.timer.inSeconds) + '&totalscore=' + encodeURIComponent(data.total) + '&method=update&special=ofjshfsgufdirhfewgwe37gefhurqv3';
+    console.log(requestStr);
+    http.send(requestStr);
+
+    http.onreadystatechange = () => {
+      if (http.readyState === 4 && http.status === 200) {
+        resolve(http.responseText);
+      }
+    }
+  });
 }
 
 
@@ -397,6 +510,8 @@ const initTimer = ({ els, data }) => {
     }
     sec.innerHTML = data.timer.sec < 10 ? `0${data.timer.sec}` : data.timer.sec;
     min.innerHTML = data.timer.min < 10 ? `0${data.timer.min}` : data.timer.min;
+
+    data.timer.inSeconds++;
   }, 1000);
 }
 
@@ -411,6 +526,8 @@ const getEls = ({ els, container }) => {
   els.questTitle = dom.findFirst('#questTitle', container);
   els.questFormContainer = dom.findFirst('#questFormContainer', container);
   els.questContainer = dom.findFirst('#questContainer', container);
+  els.imgCol = dom.findFirst('.img-col', container);
+  els.testWrap = dom.findFirst('.has-test', container);
 }
 
 
@@ -420,7 +537,7 @@ const getEls = ({ els, container }) => {
 const createQuizHTML = ({ data }) => {
   let html = (
 
-    <div id="jsQuiz" className="has-preloader" data-ajax="/_request.php?action=js_quiz" data-quiz="quizId">
+    <div id="jsQuiz" className="has-preloader">
 
       <div className="row clearfix center-row">
         <div className="col-lg-12 desc-col">
@@ -478,4 +595,90 @@ const createQuizHTML = ({ data }) => {
   }
 
   return html;
+}
+
+
+
+
+
+
+
+const createResultHTML = ({ res, data, status }) => {
+  let html = (
+    <div className="has-test mb-5">
+      <div className="row test-result-row center-row">
+        <div className="col-lg-12 test-result-col">
+
+          <div className="border-red">
+            <div className="test-result-slider slick black-dots" id="testResult">
+
+
+              <div className="slick-item test-res-container">
+                <h3 className="fs-l red res-title">Поздравляем!</h3>
+                <h4 className="fs-xl mb-0">Результаты викторины</h4>
+                <div className="quiz-res-text" id="testTextResult">Wow!  Вот это интуиция! От вас ничего не утаишь.<br /> “Битва Экстрасенсов” просто отдыхает</div>
+                <div className="test-res-review">
+                  <div>
+                    <span className="review-title">Результат</span>
+                    <span className="review-val" id="resCount">8/10</span>
+                  </div>
+                  <div>
+                    <span className="review-title">Время</span>
+                    <span className="review-val" id="resTime">00:37</span>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+              <div className="slick-item test-res-container">
+                <h3 className="fs-l red res-title">Рейтинг</h3>
+                <table className="rate-table">
+                  <thead>
+                    <tr>
+                      <th>Имя</th>
+                      <th>Результат</th>
+                      <th>Время</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1.Александра</td>
+                      <td>10/10</td>
+                      <td>01:13</td>
+                    </tr>
+                    <tr>
+                      <td>2.Екатерина</td>
+                      <td>10/10</td>
+                      <td>01:13</td>
+                    </tr>
+                    <tr>
+                      <td>3.Светлана</td>
+                      <td>10/10</td>
+                      <td>01:13</td>
+                    </tr>
+                    <tr>
+                      <td>4.Анастасия</td>
+                      <td>10/10</td>
+                      <td>01:13</td>
+                    </tr>
+                    <tr>
+                      <td>5.Гость</td>
+                      <td>10/10</td>
+                      <td>01:13</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  );
 }

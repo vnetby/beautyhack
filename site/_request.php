@@ -217,6 +217,10 @@ if (isset($_GET['action'])) {
 
 
   if ($_GET['action'] === 'js_quiz') {
+
+    print_r ($_POST);
+
+    exit;
     $quizId = $_POST['quizId'];
 
     if (isset($_POST['quizResult'])) {

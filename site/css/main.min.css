@@ -364,6 +364,17 @@ svg .svg-stroke {
 .hover-black.active .svg-stroke {
   stroke: #000;
 }
+.quiz-login-form {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-weight: bold;
+}
+.quiz-login-form a {
+  color: #eb5757;
+}
+.quiz-login-form a:hover {
+  color: #000;
+}
 .grey,
 .hover-grey:hover,
 .hover-grey.active {
@@ -3976,10 +3987,11 @@ a.btn.light.current {
   margin-right: auto;
 }
 .art-page .art-content .has-test .test-img img {
-  width: 100% !important;
   height: 100% !important;
-  -o-object-fit: cover;
-     object-fit: cover;
+  width: auto !important;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 @media (max-width: 992px) {
   .art-page .art-content {
