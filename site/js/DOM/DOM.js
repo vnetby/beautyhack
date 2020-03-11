@@ -3,7 +3,7 @@ import { createNewEvent } from '../ie_fix.js';
 export class DOM {
 
 
-  constructor () {
+  constructor() {
     this.body = document.body;
     this.preloader = this.createPreloader();
   }
@@ -11,27 +11,27 @@ export class DOM {
 
   removeClass(el, className) {
     if (!el) return false;
-    let allClassNames = this.getClassName( className );
-    allClassNames.forEach ( name => {
-      if ( el.classList.contains(name)) el.classList.remove(name);
+    let allClassNames = this.getClassName(className);
+    allClassNames.forEach(name => {
+      if (el.classList.contains(name)) el.classList.remove(name);
     });
   }
 
 
 
-  addClass (el,className ) {
-    let allClassNames = this.getClassName( className );
-    allClassNames.forEach ( name => {
-      if ( !el.classList.contains(name)) el.classList.add(name);
+  addClass(el, className) {
+    let allClassNames = this.getClassName(className);
+    allClassNames.forEach(name => {
+      if (!el.classList.contains(name)) el.classList.add(name);
     });
   }
 
 
 
-  getClassName ( className ) {
+  getClassName(className) {
     let arr = [];
     let ex = className.split(' ');
-    ex.forEach ( item => {
+    ex.forEach(item => {
       arr.push(item.trim());
     });
     return arr;
@@ -58,15 +58,15 @@ export class DOM {
 
 
 
-  slideDown (el, display = 'block', transition = 300 ) {
-    el.setAttribute('style','opacity: 0; position: absolute; display: block');
+  slideDown(el, display = 'block', transition = 300) {
+    el.setAttribute('style', 'opacity: 0; position: absolute; display: block');
     setTimeout(() => {
       let height = el.offsetHeight + 'px';
-      el.setAttribute('style','opacity: 0; height: 0; display: '+display+'; transition: .3s;');
+      el.setAttribute('style', 'opacity: 0; height: 0; display: ' + display + '; transition: .3s;');
       setTimeout(() => {
         el.style.opacity = '1';
         el.style.height = height;
-        setTimeout( () => {
+        setTimeout(() => {
           el.style.height = 'auto';
         }, transition);
       }, 0);
@@ -79,7 +79,7 @@ export class DOM {
   slideUp(el, display = 'none', transition = 300) {
     if (!el) return false;
     el.style.height = el.offsetHeight + 'px';
-    setTimeout( () => {
+    setTimeout(() => {
       el.style.opacity = '0';
       el.style.height = '0px';
       setTimeout(() => {
@@ -93,7 +93,7 @@ export class DOM {
 
 
 
-  insertAfter (el, after) {
+  insertAfter(el, after) {
     after.parentNode.insertBefore(el, after.nextSibling);
     return this;
   }
@@ -101,7 +101,7 @@ export class DOM {
 
 
   remove(el) {
-    if ( el.parentNode ) {
+    if (el.parentNode) {
       el.parentNode.removeChild(el);
     }
   }
@@ -113,41 +113,41 @@ export class DOM {
 
 
 
-  find( selector, where ) {
+  find(selector, where) {
     let searchIn = this.__getWhere(where);
     let all = searchIn.querySelectorAll(selector);
-    if ( !all.length ) return false;
-    if ( all.length === 1 ) return all[0];
+    if (!all.length) return false;
+    if (all.length === 1) return all[0];
     let arr = [];
-    for ( let i = 0; i < all.length; i++ ) {
-      arr.push ( all[i] );
+    for (let i = 0; i < all.length; i++) {
+      arr.push(all[i]);
     }
     return arr;
   }
 
 
 
-  findAll ( selector, where ) {
+  findAll(selector, where) {
     let searchIn = this.__getWhere(where);
     let all = searchIn.querySelectorAll(selector);
     let arr = [];
-    for ( let i = 0; i < all.length; i++ ) {
-      arr.push ( all[i] );
+    for (let i = 0; i < all.length; i++) {
+      arr.push(all[i]);
     }
     return arr;
   }
 
 
 
-  findFirst (selector, where) {
+  findFirst(selector, where, defVal = false) {
     let searchIn = this.__getWhere(where);
     let obj = searchIn.querySelector(selector);
     // this.extendDomObject( obj );
-    return obj
+    return obj ? obj : defVal;
   }
 
 
-  extendDomObject ( obj ) {
+  extendDomObject(obj) {
     // if ( obj ) {
     //   obj.__proto__.findFirst = this.__findFirst.bind(this, obj);
     //   obj.__proto__.findAll   = this.__findAll.bind(this, obj);
@@ -155,26 +155,26 @@ export class DOM {
     // }
   }
 
-  __findFirst ( obj, selector ) {
+  __findFirst(obj, selector) {
     return this.findFirst(selector, obj);
   }
-  __findAll ( obj, selector ) {
+  __findAll(obj, selector) {
     return this.findAll(selector, obj);
   }
-  __css( obj, cssValues ) {
-    return this.css( obj, cssValues );
+  __css(obj, cssValues) {
+    return this.css(obj, cssValues);
   }
 
 
 
 
-  css (el, obj = {}) {
-    let keys   = Object.keys(obj);
+  css(el, obj = {}) {
+    let keys = Object.keys(obj);
     let values = Object.values(obj);
 
     let str = '';
 
-    keys.forEach ( (key, i) => {
+    keys.forEach((key, i) => {
       str += `${key}: ${values[i]}; `;
     });
 
@@ -184,20 +184,20 @@ export class DOM {
 
 
 
-  getContainer ( container ) {
+  getContainer(container) {
     let wrap = false;
-    if ( container ) {
-      if ( typeof container === 'object' ) {
-        if ( container.tagName ) {
+    if (container) {
+      if (typeof container === 'object') {
+        if (container.tagName) {
           wrap = container;
         }
       }
     }
-    if ( wrap ) return wrap;
+    if (wrap) return wrap;
     try {
-      wrap = this.findFirst( container );
-    } catch ( e ) {
-      console.error ( e );
+      wrap = this.findFirst(container);
+    } catch (e) {
+      console.error(e);
     }
     return wrap ? wrap : this.body;
   }
@@ -205,7 +205,7 @@ export class DOM {
 
 
 
-  __getWhere (where) {
+  __getWhere(where) {
     let searchIn;
     if (where) {
       if (typeof where === 'string') {
@@ -236,30 +236,30 @@ export class DOM {
 
 
 
-  addPreloader ( container ) {
+  addPreloader(container) {
     let preloader;
-    if ( !this.findFirst( '.ajax-preloader', container ) ) {
+    if (!this.findFirst('.ajax-preloader', container)) {
       this.addClass(this.preloader, 'visible');
-      container.appendChild( this.preloader );
+      container.appendChild(this.preloader);
     }
   }
 
 
-  createPreloader () {
+  createPreloader() {
     let preloader = this.create('div', 'ajax-preloader');
     let img = new Image;
     img.src = back_dates.SRC + 'img/ajax-load.gif';
-    preloader.appendChild( img );
+    preloader.appendChild(img);
     return preloader;
   }
 
 
-  removePreloader ( container ) {
-    if ( !this.findFirst('.ajax-preloader', container ) ) return;
+  removePreloader(container) {
+    if (!this.findFirst('.ajax-preloader', container)) return;
     this.removeClass(this.preloader, 'visible');
-    setTimeout( () => {
-      if ( this.preloader.parentNode ) {
-        this.preloader.parentNode.removeChild( this.preloader );
+    setTimeout(() => {
+      if (this.preloader.parentNode) {
+        this.preloader.parentNode.removeChild(this.preloader);
       }
     }, 300);
   }
@@ -267,7 +267,7 @@ export class DOM {
 
 
 
-  strToDom ( str ) {
+  strToDom(str) {
     let div = document.createElement('div');
     div.innerHTML = str;
     return div.firstChild;
@@ -278,46 +278,46 @@ export class DOM {
 
 
 
-  ajax ({url, data, preloader}) {
+  ajax({ url, data, preloader }) {
     let type = data ? 'post' : 'get';
     let http = new XMLHttpRequest;
 
-    http.open( type, url );
+    http.open(type, url);
 
     let requestData;
 
-    if ( typeof data === 'object' ) {
-      if ( data instanceof FormData ) {
+    if (typeof data === 'object') {
+      if (data instanceof FormData) {
         requestData = data;
       } else {
         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        requestData = this.createRequestDataString( data );
+        requestData = this.createRequestDataString(data);
       }
     }
 
-    http.send( requestData );
-    if ( preloader ) {
-      this.addPreloader ( preloader );
+    http.send(requestData);
+    if (preloader) {
+      this.addPreloader(preloader);
     }
-    return new Promise( (resolve, reject) => {
+    return new Promise((resolve, reject) => {
       http.onreadystatechange = () => {
-        if ( http.readyState === 4 && http.status === 200 ) {
-          if ( preloader ) {
-            this.removePreloader ( preloader );
+        if (http.readyState === 4 && http.status === 200) {
+          if (preloader) {
+            this.removePreloader(preloader);
           }
-          resolve( http.responseText );
+          resolve(http.responseText);
         }
       }
     })
   }
 
 
-  createRequestDataString ( data ) {
-    if ( !data ) return null;
+  createRequestDataString(data) {
+    if (!data) return null;
     let str = '';
-    Object.keys(data).forEach( (key, i) => {
+    Object.keys(data).forEach((key, i) => {
       let val = data[key];
-      if ( !i ) {
+      if (!i) {
         str += `${key}=${val}`;
       } else {
         str += `&${key}=${val}`;

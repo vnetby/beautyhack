@@ -9,9 +9,15 @@ export const oldArtFixQuiz = wrap => {
   let container = dom.getContainer(wrap);
   if (!container) return;
 
-  defineFake();
+  // defineFake();
 
   if (typeof quiz_v2_data === 'undefined') return;
+
+  let userData = {
+    userName: dom.findFirst('#userName', container, {}).value,
+    quizID: dom.findFirst('#quizID', container, {}).value,
+    modxUserId: dom.findFirst('#modxUserId', container, {}).value
+  };
 
   let item = dom.findFirst('#quiz_v2_content', container);
   if (!item) return;
@@ -25,7 +31,7 @@ export const oldArtFixQuiz = wrap => {
   let pLeft = dom.findFirst('.p-left');
   if (pLeft) dom.removeClass(pLeft, 'p-left');
 
-  init({ art, container });
+  init({ art, container, userData });
 }
 
 
@@ -169,8 +175,10 @@ const defineFake = () => {
 
 
 
-const init = ({ art, container }) => {
-  let data = quiz_v2_data;
+const init = ({ art, container, userData }) => {
+
+  let data = { ...quiz_v2_data, ...userData };
+  
   let html = createQuizHTML({ data });
 
   let wrap = art.querySelector('.col-lg-12');
@@ -183,9 +191,6 @@ const init = ({ art, container }) => {
 
   loadImages({ els, data });
 
-  data.userName = 'someName';
-  data.quizID = 'someQuizInd';
-  data.modxUserId = 'modxUserId';
 
   checkUserLoginData({ els, data });
 
@@ -199,6 +204,7 @@ const init = ({ art, container }) => {
   data.trueAnswers = 0;
 
   initQuiz({ els, data });
+  console.log(data);
 }
 
 
@@ -353,7 +359,6 @@ const createAnswers = ({ els, data }) => {
       <div className="form-row test-radio">
         <input type="radio" name={`questAnswer${data.current}`} id={`questAnswer${data.current}${i}`} />
         <label className="quest-answer-input" for={`questAnswer${data.current}${i}`} data-quest={data.current} data-answer={i}>
-          {answer.text}
         </label>
         <span className="ico wrong-ico test-ico">
         </span>
@@ -361,6 +366,8 @@ const createAnswers = ({ els, data }) => {
         </span>
       </div>
     );
+    let txtWrap = dom.findFirst('.quest-answer-input', str);
+    txtWrap.innerHTML = answer.text;
     div.appendChild(str);
   });
   els.questFormContainer.innerHTML = '';
