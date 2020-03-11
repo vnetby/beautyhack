@@ -1,9 +1,11 @@
 import { DOM } from "../DOM/DOM";
 let dom = new DOM;
 import { React } from "../React";
+import { dynamicScripts } from '../';
 
-// const RESULT_AJAX_URL = '/_request.php?action=js_quiz';
-const RESULT_AJAX_URL = '/assets/ajax/quiz_v2_ajax.php';
+
+const RESULT_AJAX_URL = '/_request.php?action=js_quiz';
+// const RESULT_AJAX_URL = '/assets/ajax/quiz_v2_ajax.php';
 
 export const oldArtFixQuiz = wrap => {
   let container = dom.getContainer(wrap);
@@ -16,9 +18,9 @@ export const oldArtFixQuiz = wrap => {
   let userData = {
     userName: dom.findFirst('#userName', container, {}).value,
     quizID: dom.findFirst('#quizID', container, {}).value,
-    modxUserId: dom.findFirst('#modxUserId', container, {}).value
+    modxUserId: dom.findFirst('#modxUserId', container, {}).value,
+    isLogin: dom.findFirst('#is_login', container, {}).value === 'true' ? true : false
   };
-
   let item = dom.findFirst('#quiz_v2_content', container);
   if (!item) return;
 
@@ -178,7 +180,7 @@ const defineFake = () => {
 const init = ({ art, container, userData }) => {
 
   let data = { ...quiz_v2_data, ...userData };
-  
+
   let html = createQuizHTML({ data });
 
   let wrap = art.querySelector('.col-lg-12');
@@ -203,15 +205,20 @@ const init = ({ art, container, userData }) => {
 
   data.trueAnswers = 0;
 
+  let res = getLocalResult({ els, data });
+  if (res) {
+    displayResult({ els, data, html: res });
+    return;
+  }
   initQuiz({ els, data });
-  console.log(data);
 }
 
 
 
 
 const checkUserLoginData = ({ els, data }) => {
-  let isLogin;
+  let isLogin = true;
+  // data.isLogin - is value of hidden input;
 
   if (data.quiz_authorization) {
     isLogin = false;
@@ -219,15 +226,11 @@ const checkUserLoginData = ({ els, data }) => {
     isLogin = true;
   }
 
-  // if ($('.top_nav .welc').length > 0) {
-  //   isLogin = true;
-  //   data.userName = $('.top_nav .welc span').html().split(' ');
-  //   data.userName = userName[1];
-  // } else {
-  //   data.userName = 'Гость';
-  // }
+  if (data.isLogin) {
+    isLogin = true;
+  }
 
-  data.isUserLogin = true;
+  data.isUserLogin = isLogin;
 }
 
 
@@ -285,7 +288,7 @@ const initQuiz = ({ els, data }) => {
 
 const displayLoginForm = ({ els, data }) => {
   let form = (
-    <div class="row">
+    <div class="row center-row">
       <div className="col-lg-12 quiz-login-form">
         Для продолжения вам необходимо <a href="register" class="pop_up_link" data-name="signup">зарегистрироваться</a> или <a href="login" class="pop_up_link" data-name="login">войти</a>.
       </div>
@@ -421,8 +424,6 @@ const changeQuestion = ({ els, data }) => {
 
 const finishTest = ({ els, data }) => {
   data.finish = true;
-  console.log(data);
-
   if (!data.isUserLogin) {
     displayLoginForm({ els, data });
     return;
@@ -431,12 +432,11 @@ const finishTest = ({ els, data }) => {
     sendResult({ els, data })
       .then(res => {
         console.log(res);
+        setLocalResult({ els, data, html: res });
+        displayResult({ els, data, html: res });
+        dom.removePreloader(els.testWrap);
         // window.location.search = '?userid=' + data.modxUserId;
       });
-
-    // let fakeRespone = { status: '{"status": [{"name":"Гость","score":"9","seconds":"43"},{"name":"Гость","score":"9","seconds":"52"},{"name":"Гость","score":"9","seconds":"61"},{"name":"Гость","score":"9","seconds":"63"},{"name":"Гость","score":"9","seconds":"63"}]}' };
-    // let status = JSON.parse(fakeRespone.status);
-    // let resHTML = createResultHTML({ els, data, status });
   }
 
 }
@@ -444,16 +444,99 @@ const finishTest = ({ els, data }) => {
 
 
 
+
+
+
+const setLocalResult = ({ els, data, html }) => {
+  let local = window.localStorage.getItem('quizResults');
+  local = local ? JSON.parse(local) : {};
+  local[data.quizID] = html;
+  local = JSON.stringify(local);
+  window.localStorage.setItem('quizResults', local);
+}
+
+
+
+
+
+const getLocalResult = ({ els, data }) => {
+  let local = window.localStorage.getItem('quizResults');
+  if (!local) return false;
+  local = JSON.parse(local);
+  return local[data.quizID];
+}
+
+
+
+
+const displayResult = ({ els, data, html }) => {
+  let div = document.createElement('div');
+  div.innerHTML = html;
+  div.appendChild(createResetLocalBtn({ els, data }));
+  els.questRow.parentNode.replaceChild(div, els.questRow);
+  dynamicScripts(div);
+  // setTimeout(() => {
+  //   let scroll = div.getBoundingClientRect().top + window.pageYOffset - 100;
+  //   window.scrollTo(0, scroll);
+  //   console.log(scroll);
+  // }, 10);
+}
+
+
+
+
+const deleteLocalResult = ({ els, data }) => {
+  dom.addPreloader(els.testWrap);
+
+  let local = window.localStorage.getItem('quizResults');
+  local = local ? JSON.parse(local) : false;
+  if (!local) return;
+  if (!local[data.quizID]) return;
+
+  delete local[data.quizID];
+
+  if (!Object.keys(local).length) {
+    window.localStorage.removeItem('quizResults');
+  } else {
+    local = JSON.stringify(local);
+    window.localStorage.setItem('quizResults', local);
+  }
+}
+
+
+
+
+const createResetLocalBtn = ({ els, data }) => {
+  let div = dom.create('div', 'reset-local-wrap');
+  let btn = dom.create('button', 'reset-local-btn btn black');
+  btn.innerHTML = 'Проити еще раз';
+
+  initResetLocalBtn({ els, data, btn });
+  div.appendChild(btn);
+
+
+  return div;
+}
+
+
+
+const initResetLocalBtn = ({ els, data, btn }) => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    deleteLocalResult({ els, data });
+    window.location.href = window.location.href;
+  });
+}
+
+
+
 const sendResult = ({ els, data }) => {
   return new Promise((resolve, reject) => {
-
     let http = new XMLHttpRequest();
 
     let requesturl = RESULT_AJAX_URL + '?name=' + encodeURIComponent(data.userName) + '&quizID=' + encodeURIComponent(data.quizID) + '&modxuserid=' + encodeURIComponent(data.modxUserId) + '&score=' + encodeURIComponent(data.trueAnswers) + '&seconds=' + encodeURIComponent(data.timer.inSeconds) + '&totalscore=' + encodeURIComponent(data.total) + '&method=update&special=ofjshfsgufdirhfewgwe37gefhurqv3';
 
-    http.open('GET', requesturl);
-
-    console.log(requesturl);
+    http.open('GET', RESULT_AJAX_URL);
 
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
@@ -538,6 +621,7 @@ const getEls = ({ els, container }) => {
   els.questContainer = dom.findFirst('#questContainer', container);
   els.imgCol = dom.findFirst('.img-col', container);
   els.testWrap = dom.findFirst('.has-test', container);
+  els.questRow = container.parentNode;
 }
 
 
@@ -613,82 +697,82 @@ const createQuizHTML = ({ data }) => {
 
 
 
-const createResultHTML = ({ res, data, status }) => {
-  let html = (
-    <div className="has-test mb-5">
-      <div className="row test-result-row center-row">
-        <div className="col-lg-12 test-result-col">
+const getFakeResultResponse = () => {
+  return `
+  <div class="has-test mb-5">
+	<div class="row test-result-row center-row">
+		<div class="col-lg-12 test-result-col">
+			<div class="border-red">
+				<div class="test-result-slider slick black-dots" id="testResult">
+					<div class="slick-item test-res-container">
+						<h3 class="fs-l red res-title">Поздравляем!</h3>
+						<h4 class="fs-xl mb-0">Результаты викторины</h4>
+						<div class="quiz-res-text" id="testTextResult">
+							Скорее всего, в уходе за кожей вы – за минимализм. Но информация, которую вы узнали лишней не будет.
+						</div>
+						<div class="test-res-review">
+							<div>
+								<span class="review-title">Результат</span>
+								<span class="review-val" id="resCount">2/10</span>
+							</div>
+							<div>
+								<span class="review-title">Время</span>
+								<span class="review-val" id="resTime">00:09</span>
+							</div>
+						</div>
+					</div>
+					<div class="slick-item test-res-container">
+	<h3 class="fs-l red res-title">Рейтинг</h3>
+	<table class="rate-table">
+		<thead>
+			<tr>
+				<th>Имя</th>
+				<th>Результат</th>
+				<th>Время</th>
+			</tr>
+		</thead>
+		<tbody>
+								<tr>
+					<td>1.Гость</td>
+					<td>10/10</td>
+					<td>00:43</td>
+					</tr>
+					<tr>
+					<td>2.Гость</td>
+					<td>10/10</td>
+					<td>00:44</td>
+					</tr>
+					<tr>
+					<td>3.Гость</td>
+					<td>10/10</td>
+					<td>00:45</td>
+					</tr>
+					<tr>
+					<td>4.Гость</td>
+					<td>10/10</td>
+					<td>00:52</td>
+					</tr>
+					<tr>
+					<td>5.Гость</td>
+					<td>10/10</td>
+					<td>00:56</td>
+					</tr>
 
-          <div className="border-red">
-            <div className="test-result-slider slick black-dots" id="testResult">
+		</tbody>
+	</table>
+</div>
 
-
-              <div className="slick-item test-res-container">
-                <h3 className="fs-l red res-title">Поздравляем!</h3>
-                <h4 className="fs-xl mb-0">Результаты викторины</h4>
-                <div className="quiz-res-text" id="testTextResult">Wow!  Вот это интуиция! От вас ничего не утаишь.<br /> “Битва Экстрасенсов” просто отдыхает</div>
-                <div className="test-res-review">
-                  <div>
-                    <span className="review-title">Результат</span>
-                    <span className="review-val" id="resCount">8/10</span>
-                  </div>
-                  <div>
-                    <span className="review-title">Время</span>
-                    <span className="review-val" id="resTime">00:37</span>
-                  </div>
-                </div>
-              </div>
-
-
-
-
-              <div className="slick-item test-res-container">
-                <h3 className="fs-l red res-title">Рейтинг</h3>
-                <table className="rate-table">
-                  <thead>
-                    <tr>
-                      <th>Имя</th>
-                      <th>Результат</th>
-                      <th>Время</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1.Александра</td>
-                      <td>10/10</td>
-                      <td>01:13</td>
-                    </tr>
-                    <tr>
-                      <td>2.Екатерина</td>
-                      <td>10/10</td>
-                      <td>01:13</td>
-                    </tr>
-                    <tr>
-                      <td>3.Светлана</td>
-                      <td>10/10</td>
-                      <td>01:13</td>
-                    </tr>
-                    <tr>
-                      <td>4.Анастасия</td>
-                      <td>10/10</td>
-                      <td>01:13</td>
-                    </tr>
-                    <tr>
-                      <td>5.Гость</td>
-                      <td>10/10</td>
-                      <td>01:13</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-
-
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  );
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+  `;
 }
+
+
+
+
+
+
+

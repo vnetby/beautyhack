@@ -217,10 +217,9 @@ if (isset($_GET['action'])) {
 
 
   if ($_GET['action'] === 'js_quiz') {
-
-    print_r ($_GET);
-
+    require(ABSPATH . 'template-parts/ajax_quiz_result2.php');
     exit;
+
     $quizId = $_POST['quizId'];
 
     if (isset($_POST['quizResult'])) {
