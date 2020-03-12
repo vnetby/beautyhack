@@ -237,7 +237,12 @@ const checkUserLoginData = ({ els, data }) => {
 
 
 const loadImages = ({ els, data }) => {
-  data.questions = data.questions.map(item => { item.image = item.image ? <img src={item.image} alt="preview" /> : null; return item; });
+  data.questions = data.questions.map(item => {
+    if (!item.image) return;
+    let src = item.image;
+    item.image = <img src={src} alt="preview" />;
+    return item;
+  });
 }
 
 
