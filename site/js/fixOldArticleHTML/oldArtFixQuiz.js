@@ -4,8 +4,8 @@ import { React } from "../React";
 import { dynamicScripts } from '../';
 
 
-const RESULT_AJAX_URL = '/_request.php?action=js_quiz';
-// const RESULT_AJAX_URL = '/assets/ajax/quiz_v2_ajax.php';
+// const RESULT_AJAX_URL = '/_request.php?action=js_quiz';
+const RESULT_AJAX_URL = '/assets/ajax/quiz_v2_ajax.php';
 
 export const oldArtFixQuiz = wrap => {
   let container = dom.getContainer(wrap);
@@ -536,7 +536,7 @@ const sendResult = ({ els, data }) => {
 
     let requesturl = RESULT_AJAX_URL + '?name=' + encodeURIComponent(data.userName) + '&quizID=' + encodeURIComponent(data.quizID) + '&modxuserid=' + encodeURIComponent(data.modxUserId) + '&score=' + encodeURIComponent(data.trueAnswers) + '&seconds=' + encodeURIComponent(data.timer.inSeconds) + '&totalscore=' + encodeURIComponent(data.total) + '&method=update&special=ofjshfsgufdirhfewgwe37gefhurqv3';
 
-    http.open('GET', RESULT_AJAX_URL);
+    http.open('GET', requesturl);
 
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
