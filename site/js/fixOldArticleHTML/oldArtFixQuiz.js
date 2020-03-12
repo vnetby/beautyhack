@@ -44,7 +44,7 @@ export const oldArtFixQuiz = (wrap, ajaxRequest) => {
 
   let copyData = JSON.stringify(quiz_v2_data);
 
-  let data = { ...JSON.parse(copyData), userData };
+  let data = { ...JSON.parse(copyData), ...userData };
 
   init({ art, container, data });
 }
