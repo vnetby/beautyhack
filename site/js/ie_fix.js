@@ -40,7 +40,7 @@ export const objectFit = container => {
       let parent = img.parentNode;
       let src = img.src;
       dom.css( parent, {
-        'background-image' : `url(${src})`,
+        'background-image' : `url('${src}')`,
         'background-size'  : 'cover',
         'background-position' : 'center center'
       });

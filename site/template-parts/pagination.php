@@ -16,5 +16,9 @@
   <a href="#" class="pagination__page">60</a>
   <span class="pagination__dots">...</span>
   <a href="#" class="pagination__page">318</a>
+  <a href="#" class="pagination__page">318</a>
+  <a href="#" class="pagination__page">318</a>
+  <a href="#" class="pagination__page">318</a>
+  <a href="#" class="pagination__page">318</a>
   <a href="#" class="pagination__page pagination__next"></a>
 </section>

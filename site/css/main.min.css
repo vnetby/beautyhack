@@ -942,8 +942,6 @@ svg .svg-stroke {
   border: 3px solid #E7E7E7;
 }
 .shadow-both {
-  padding-left: 28px;
-  padding-right: 28px;
   position: relative;
 }
 .shadow-both:before {
@@ -951,10 +949,17 @@ svg .svg-stroke {
   content: "";
   display: block;
   top: 20px;
-  left: 0;
-  width: 100%;
+  left: -20px;
+  width: calc(100% + 40px);
   height: 100%;
   border: 3px solid #E7E7E7;
+}
+@media (max-width: 1025px) {
+  .shadow-both:before {
+    top: 15px;
+    left: -15px;
+    width: calc(100% + 30px);
+  }
 }
 @media (max-width: 576px) {
   .shadow-both.sm-full-content {
@@ -4532,7 +4537,7 @@ a.btn.light.current {
           justify-content: center;
 }
 .header .big-banner > * {
-  max-width: 100%!important;
+  max-width: 100% !important;
 }
 .header .profile-col {
   display: -webkit-box;
@@ -5424,6 +5429,7 @@ a.btn.light.current {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
+  height: inherit;
 }
 @media (min-width: 576px) {
   .art-card-col {
@@ -5626,6 +5632,11 @@ a.btn.light.current {
 .has-banner:not(.simple-preview) .art-card-col:nth-child(20) .thumb img {
   width: 100%;
   height: auto;
+}
+.has-banner:not(.simple-preview) .art-card-col:nth-child(20) .card,
+.has-banner:not(.simple-preview) .art-card-col:nth-child(20) .card .thumb,
+.has-banner:not(.simple-preview) .art-card-col:nth-child(20) .card .thumb img {
+  height: inherit !important;
 }
 @media (max-width: 992px) {
   .has-banner:not(.simple-preview) .art-card-col:nth-child(7) {
@@ -5847,6 +5858,7 @@ a.btn.light.current {
   text-align: center;
   font-weight: bold;
   line-height: 1.35;
+  width: 100%;
 }
 @media (max-width: 992px) {
   .big-slider-col .slick-title {
