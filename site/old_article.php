@@ -44,13 +44,14 @@ $artHTML = get_old_art_content($arts[$artId]);
         ?>
       </div>
       <?php
-
-      // echo $arts[$artId] . ' => ' . $artId;
-      // echo '<hr>';
-
       echo $artHTML;
       ?>
-
+      <script>
+        var some = {
+          name: 'vadzim'
+        };
+        // console.log(quiz_v2_data);
+      </script>
 
     </div>
   </div>

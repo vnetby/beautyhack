@@ -95,7 +95,8 @@ export const dynamicScripts = (container) => {
   oldArtBlockquote(container);
   oldArtRemoveUnusedElements(container);
   oldArtFixTest(container);
-  oldArtFixQuiz(container);
+
+  oldArtFixQuiz(container, !!container);
 }
 
 

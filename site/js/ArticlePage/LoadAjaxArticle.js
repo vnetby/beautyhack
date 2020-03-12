@@ -226,6 +226,7 @@ export class LoadAjaxArticle extends DOM {
     if (this.beforeLoad) this.beforeLoad();
     this.sendRequest()
       .then(response => {
+        // eval(response);
         let newContent = this.getResponseContainer(response);
 
         if (!newContent) return this.throwError(`can't find element ${this.selector} in response text`);
@@ -256,7 +257,6 @@ export class LoadAjaxArticle extends DOM {
   execInlineJs(newContent) {
     let scripts = this.findAll('script', newContent);
     if (!scripts || !scripts.length) return newContent;
-
     let footScripts = [];
     let inlineScripts = '';
 
@@ -266,9 +266,11 @@ export class LoadAjaxArticle extends DOM {
         return;
       }
       footScripts.push(script.cloneNode());
-      // script.parentNode.removeChild(script);
+      script.parentNode.removeChild(script);
     });
-    // console.log(newContent);
+    
+    eval(inlineScripts);
+
     return newContent;
   }
 

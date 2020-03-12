@@ -4,14 +4,22 @@ import { React } from "../React";
 import { dynamicScripts } from '../';
 
 
+let isAjax;
+
 // const RESULT_AJAX_URL = '/_request.php?action=js_quiz';
 const RESULT_AJAX_URL = '/assets/ajax/quiz_v2_ajax.php';
 
-export const oldArtFixQuiz = wrap => {
+
+
+
+
+
+export const oldArtFixQuiz = (wrap, ajaxRequest) => {
+
+  isAjax = ajaxRequest;
+
   let container = dom.getContainer(wrap);
   if (!container) return;
-
-  // defineFake();
 
   if (typeof quiz_v2_data === 'undefined') return;
 
@@ -21,6 +29,7 @@ export const oldArtFixQuiz = wrap => {
     modxUserId: dom.findFirst('#modxUserId', container, {}).value,
     isLogin: dom.findFirst('#is_login', container, {}).value === 'true' ? true : false
   };
+
   let item = dom.findFirst('#quiz_v2_content', container);
   if (!item) return;
 
@@ -33,141 +42,11 @@ export const oldArtFixQuiz = wrap => {
   let pLeft = dom.findFirst('.p-left');
   if (pLeft) dom.removeClass(pLeft, 'p-left');
 
-  init({ art, container, userData });
-}
+  let copyData = JSON.stringify(quiz_v2_data);
 
+  let data = { ...JSON.parse(copyData), userData };
 
-
-
-const defineFake = () => {
-  window.quiz_v2_data = {
-    "quiz_authorization": false,
-    "intro": {
-      "name": "Викторина: Угадай, у кого из звезд накладная челка",
-      "text": "Накладная челка - гениальнейшее изобретение современной бьюти-индустрии. Теперь не нужно жалеть о внезапном порыве в кресле стилиста: захотел изменений или нужен новый образ для выхода - просто используй ее для разового эффекта. При этом, челки настолько индивидуально подбираются, что отличить их от настоящих практически невозможно. Или возможно? А вот это давайте и проверим.",
-      "image": "https://new.beautyhack.ru/assets/images/2019/09/bangs.jpg"
-    }, "questions": [{ // Question 1
-      "question": "Анна Хилькевич решилась на смену имиджа или просто примерила новый образ?",
-      "image": "https://new.beautyhack.ru/assets/images/2019/09/bangs_khilkevich_fake.jpg",
-      "answers": [
-        {
-          "text": "Такую челку не подделаешь! ",
-          "isCorrect": false
-        }, {
-          "text": " Нет, это фейк",
-          "isCorrect": true
-        }
-      ]
-    }, { // Question 1
-      "question": "А вот у Анастасии Решетовой, кажется, точно своя. Или нет?",
-      "image": "https://new.beautyhack.ru/assets/images/2019/09/bangs_reshetova_fake.jpg",
-      "answers": [
-        {
-          "text": "Своя, да! ",
-          "isCorrect": false
-        }, {
-          "text": " Нуууууу, может, и не своя",
-          "isCorrect": true
-        }
-      ]
-    }, { // Question 1
-      "question": "Объемная челка Белля Хадид вызывает подозрения: своя ли?",
-      "image": "https://new.beautyhack.ru/assets/images/2019/09/bangs_bella_fake.jpg",
-      "answers": [
-        {
-          "text": "Ну здесь-то точно своя ",
-          "isCorrect": true
-        }, {
-          "text": " А вот и нет",
-          "isCorrect": false
-        }
-      ]
-    }, { // Question 1
-      "question": "Эмма Уотсон на премии «Оскар» в 2018 году появилась с новой прической. Задорная модная челка - только на выход или постоянно «прописалась» в прическе?",
-      "image": "https://new.beautyhack.ru/assets/images/2019/09/bangs_emma.jpg",
-      "answers": [
-        {
-          "text": " Похоже, что накладная ",
-          "isCorrect": false
-        }, {
-          "text": " Все же обрезала челку",
-          "isCorrect": true
-        }
-      ]
-    }, { // Question 1
-      "question": "Карли Клосс неохотно меняет прическу, но каждой девушке хочется однажды перемен. Это случай Карли?",
-      "image": "https://new.beautyhack.ru/assets/images/2019/09/bangs_karliekloss_fake.jpg",
-      "answers": [
-        {
-          "text": " Да нет, разовая акция ",
-          "isCorrect": true
-        }, {
-          "text": " Точно отрезала, так накладную не зашифруешь!",
-          "isCorrect": false
-        }
-      ]
-    }, { // Question 1
-      "question": "У Саши Савельевой после рождения первенца времени на укладку волос нет совсем, а челка - отличный способ выглядеть стильно, не экспериментируя с длиной и цветом. Или нет?",
-      "image": "https://new.beautyhack.ru/assets/images/2019/09/bangs_savelyeva.jpg",
-      "answers": [
-        {
-          "text": " Решиться на челку с младенцем?! Только если на накладную ",
-          "isCorrect": true
-        }, {
-          "text": " Точно своя!",
-          "isCorrect": false
-        }
-      ]
-    }, { // Question 1
-      "question": "Лили Коллинз с челкой очень похожа на Одри Хепберн, поэтому актриса и выбрала такую прическу",
-      "image": "https://new.beautyhack.ru/assets/images/2019/09/bangs_lilycollins_fake.jpg",
-      "answers": [
-        {
-          "text": " Да, и ей правда очень идет ",
-          "isCorrect": false
-        }, {
-          "text": " Видно ведь, что челка - ненастоящая",
-          "isCorrect": true
-        }
-      ]
-    }, { // Question 1
-      "question": "Тейлор Свифт носит свою челку или накладную?",
-      "image": "https://new.beautyhack.ru/assets/images/2019/09/bangs_swift.jpg",
-      "answers": [
-        {
-          "text": " Это легкий вопрос: кто-то помнит ее без челки вообще? ",
-          "isCorrect": true
-        }, {
-          "text": " Накладная",
-          "isCorrect": false
-        }
-      ]
-    }, { // Question 1
-      "question": "Хайди Клум и идеальнейшая форма стрижки на все времена: глубокая густая челка очень идет модели",
-      "image": "https://new.beautyhack.ru/assets/images/2019/09/bangs_klum.jpg",
-      "answers": [
-        {
-          "text": " Но поддерживать ее в реальной жизни непросто, поэтому Хайди просто использовала накладную для эффектного выхода ",
-          "isCorrect": false
-        }, {
-          "text": " Все правда!",
-          "isCorrect": true
-        }
-      ]
-    }, { // Question 1
-      "question": "Кендал Дженнер использовала беспроигрышный вариант: высокий пучок и густую челку. Угадаете: своя или накладная?",
-      "image": "https://new.beautyhack.ru/assets/images/2019/09/bangs_kendalljenner_fake.jpg",
-      "answers": [
-        {
-          "text": " Ммм, точно своя! ",
-          "isCorrect": false
-        }, {
-          "text": " Накладная",
-          "isCorrect": true
-        }
-      ]
-    }]
-  };
+  init({ art, container, data });
 }
 
 
@@ -177,9 +56,10 @@ const defineFake = () => {
 
 
 
-const init = ({ art, container, userData }) => {
 
-  let data = { ...quiz_v2_data, ...userData };
+
+
+const init = ({ art, container, data }) => {
 
   let html = createQuizHTML({ data });
 
@@ -216,6 +96,11 @@ const init = ({ art, container, userData }) => {
 
 
 
+
+
+
+
+
 const checkUserLoginData = ({ els, data }) => {
   let isLogin = true;
   // data.isLogin - is value of hidden input;
@@ -236,14 +121,27 @@ const checkUserLoginData = ({ els, data }) => {
 
 
 
+
+
+
+
+
+
 const loadImages = ({ els, data }) => {
-  data.questions = data.questions.map(item => {
+  data.questions.forEach((item, i) => {
     if (!item.image) return;
     let src = item.image;
-    item.image = <img src={src} alt="preview" />;
-    return item;
+    let img = document.createElement('img');
+    img.src = src;
+    data.questions[i].image = img;
+    console.log(data.questions[i].image);
   });
 }
+
+
+
+
+
 
 
 
@@ -264,12 +162,21 @@ const createTimer = ({ data }) => {
 
 
 
+
+
+
+
+
 const createHoursSpan = ({ data }) => {
   let el = document.createDocumentFragment();
   el.appendChild(<span className="hours">{data.timer.hours < 10 ? `0${data.timer.hours}` : data.timer.hours}</span>);
   el.appendChild(<span className="div">:</span>);
   return el;
 }
+
+
+
+
 
 
 
@@ -291,6 +198,10 @@ const initQuiz = ({ els, data }) => {
 
 
 
+
+
+
+
 const displayLoginForm = ({ els, data }) => {
   let form = (
     <div class="row center-row">
@@ -302,6 +213,11 @@ const displayLoginForm = ({ els, data }) => {
   els.testWrap.innerHTML = '';
   els.testWrap.appendChild(form);
 }
+
+
+
+
+
 
 
 
@@ -320,9 +236,18 @@ const startQuiz = ({ els, data }) => {
 
 
 
+
+
+
+
 const removeBtn = ({ els, data }) => {
   dom.remove(els.beginTest);
 }
+
+
+
+
+
 
 
 
@@ -337,6 +262,10 @@ const addQuestion = ({ els, data }) => {
 
 
 
+
+
+
+
 const addImage = ({ els, data }) => {
   let img = data.questions[data.current].image
   if (!img) return;
@@ -347,9 +276,19 @@ const addImage = ({ els, data }) => {
 
 
 
+
+
+
+
+
 const setCountQuest = ({ els, data }) => {
   els.countQuest.innerHTML = `${data.current + 1} / ${data.total}`;
 }
+
+
+
+
+
 
 
 
@@ -357,6 +296,12 @@ const addQuestionTitle = ({ els, data }) => {
   let title = data.questions[data.current]['question'];
   els.questTitle.innerHTML = title;
 }
+
+
+
+
+
+
 
 
 
@@ -385,6 +330,12 @@ const createAnswers = ({ els, data }) => {
 
 
 
+
+
+
+
+
+
 const initAnswers = ({ els, data }) => {
   let labels = dom.findAll('.quest-answer-input', els.questFormContainer);
   labels.forEach(label => {
@@ -400,6 +351,12 @@ const initAnswers = ({ els, data }) => {
     })
   });
 }
+
+
+
+
+
+
 
 
 
@@ -427,6 +384,13 @@ const changeQuestion = ({ els, data }) => {
 
 
 
+
+
+
+
+
+
+
 const finishTest = ({ els, data }) => {
   data.finish = true;
   if (!data.isUserLogin) {
@@ -436,7 +400,6 @@ const finishTest = ({ els, data }) => {
     dom.addPreloader(els.testWrap);
     sendResult({ els, data })
       .then(res => {
-        console.log(res);
         setLocalResult({ els, data, html: res });
         displayResult({ els, data, html: res });
         dom.removePreloader(els.testWrap);
@@ -464,12 +427,21 @@ const setLocalResult = ({ els, data, html }) => {
 
 
 
+
+
+
+
 const getLocalResult = ({ els, data }) => {
   let local = window.localStorage.getItem('quizResults');
   if (!local) return false;
   local = JSON.parse(local);
   return local[data.quizID];
 }
+
+
+
+
+
 
 
 
@@ -486,6 +458,13 @@ const displayResult = ({ els, data, html }) => {
   //   console.log(scroll);
   // }, 10);
 }
+
+
+
+
+
+
+
 
 
 
@@ -511,6 +490,12 @@ const deleteLocalResult = ({ els, data }) => {
 
 
 
+
+
+
+
+
+
 const createResetLocalBtn = ({ els, data }) => {
   let div = dom.create('div', 'reset-local-wrap');
   let btn = dom.create('button', 'reset-local-btn btn black');
@@ -525,6 +510,13 @@ const createResetLocalBtn = ({ els, data }) => {
 
 
 
+
+
+
+
+
+
+
 const initResetLocalBtn = ({ els, data, btn }) => {
   btn.addEventListener('click', e => {
     e.preventDefault();
@@ -532,6 +524,12 @@ const initResetLocalBtn = ({ els, data, btn }) => {
     window.location.href = window.location.href;
   });
 }
+
+
+
+
+
+
 
 
 
@@ -558,6 +556,13 @@ const sendResult = ({ els, data }) => {
 
 
 
+
+
+
+
+
+
+
 const validate = ({ labels, current, els, data }) => {
   labels.forEach(label => {
     let answer = parseInt(label.dataset.answer);
@@ -573,6 +578,13 @@ const validate = ({ labels, current, els, data }) => {
     }
   });
 }
+
+
+
+
+
+
+
 
 
 
@@ -617,6 +629,11 @@ const initTimer = ({ els, data }) => {
 
 
 
+
+
+
+
+
 const getEls = ({ els, container }) => {
   els.beginTest = dom.findFirst('#beginTestBtn', container);
   els.countQuest = dom.findFirst('#countQuest', container);
@@ -628,6 +645,12 @@ const getEls = ({ els, container }) => {
   els.testWrap = dom.findFirst('.has-test', container);
   els.questRow = container.parentNode;
 }
+
+
+
+
+
+
 
 
 
@@ -695,86 +718,6 @@ const createQuizHTML = ({ data }) => {
 
   return html;
 }
-
-
-
-
-
-
-
-const getFakeResultResponse = () => {
-  return `
-  <div class="has-test mb-5">
-	<div class="row test-result-row center-row">
-		<div class="col-lg-12 test-result-col">
-			<div class="border-red">
-				<div class="test-result-slider slick black-dots" id="testResult">
-					<div class="slick-item test-res-container">
-						<h3 class="fs-l red res-title">Поздравляем!</h3>
-						<h4 class="fs-xl mb-0">Результаты викторины</h4>
-						<div class="quiz-res-text" id="testTextResult">
-							Скорее всего, в уходе за кожей вы – за минимализм. Но информация, которую вы узнали лишней не будет.
-						</div>
-						<div class="test-res-review">
-							<div>
-								<span class="review-title">Результат</span>
-								<span class="review-val" id="resCount">2/10</span>
-							</div>
-							<div>
-								<span class="review-title">Время</span>
-								<span class="review-val" id="resTime">00:09</span>
-							</div>
-						</div>
-					</div>
-					<div class="slick-item test-res-container">
-	<h3 class="fs-l red res-title">Рейтинг</h3>
-	<table class="rate-table">
-		<thead>
-			<tr>
-				<th>Имя</th>
-				<th>Результат</th>
-				<th>Время</th>
-			</tr>
-		</thead>
-		<tbody>
-								<tr>
-					<td>1.Гость</td>
-					<td>10/10</td>
-					<td>00:43</td>
-					</tr>
-					<tr>
-					<td>2.Гость</td>
-					<td>10/10</td>
-					<td>00:44</td>
-					</tr>
-					<tr>
-					<td>3.Гость</td>
-					<td>10/10</td>
-					<td>00:45</td>
-					</tr>
-					<tr>
-					<td>4.Гость</td>
-					<td>10/10</td>
-					<td>00:52</td>
-					</tr>
-					<tr>
-					<td>5.Гость</td>
-					<td>10/10</td>
-					<td>00:56</td>
-					</tr>
-
-		</tbody>
-	</table>
-</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-  `;
-}
-
 
 
 
