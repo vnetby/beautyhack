@@ -58,8 +58,6 @@ if (!isset($_GET['page'])) {
   ?>
   <div class="main" id="main">
     <?php
-
-
     require('template-parts/header.php');
 
     require($page);

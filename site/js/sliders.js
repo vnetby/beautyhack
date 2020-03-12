@@ -25,16 +25,29 @@ export const bigSlider = (container) => {
   let sliders = findSliders(container, '.big-slider');
   if (!sliders) return;
 
+
+
   sliders.forEach(slider => {
     let arrows = slider.parentNode.querySelector('.slick-arrows-container');
     let dots = slider.parentNode.querySelector('.slick-dots-container');
-    $(slider).slick({
+
+    let items = dom.findAll('.slick-item', slider);
+    let sets = {
       appendArrows: arrows,
       appendDots: dots,
-      dots: true,
-      prevArrow: '<button class="slick-arrow prev-arrow ico"></button>',
-      nextArrow: '<button class="slick-arrow next-arrow ico"></button>'
-    });
+      dots: true
+    };
+
+    if (items && items.length) {
+      if (items.length <= 8) {
+        sets.prevArrow = '<button class="slick-arrow prev-arrow ico"></button>';
+        sets.nextArrow = '<button class="slick-arrow next-arrow ico"></button>';
+      } else {
+        sets.arrows = false;
+      }
+    }
+
+    $(slider).slick(sets);
   });
 
 }
