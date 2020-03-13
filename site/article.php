@@ -238,9 +238,16 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="art-big-slider full-slider slick over-container">
-                <div class="slick-item">
-                  <img src="<?= URL; ?>img/art_big_slider/01.jpg" alt="big slider">
-                </div>
+                <?php
+                for ($i = 0; $i < 10; $i++) {
+                ?>
+                  <div class="slick-item">
+                    <img src="<?= URL; ?>img/art_big_slider/01.jpg" alt="big slider">
+                  </div>
+                <?php
+                }
+                ?>
+
                 <div class="slick-item">
                   <img src="<?= URL; ?>img/art_big_slider/02.jpg" alt="big slider">
                 </div>

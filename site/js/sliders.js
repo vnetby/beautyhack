@@ -21,6 +21,22 @@ export const initSliders = container => {
 }
 
 
+
+
+
+const ifAddArrows = (totalSliders) => {
+  if (totalSliders) {
+    if (totalSliders > 8 && window.innerWidth < 576) {
+      return false;
+    }
+  }
+  return true;
+}
+
+
+
+
+
 export const bigSlider = (container) => {
   let sliders = findSliders(container, '.big-slider');
   if (!sliders) return;
@@ -35,17 +51,11 @@ export const bigSlider = (container) => {
     let sets = {
       appendArrows: arrows,
       appendDots: dots,
-      dots: true
+      dots: true,
+      arrows: ifAddArrows(items.length),
+      prevArrow: '<button class="slick-arrow prev-arrow ico"></button>',
+      nextArrow: '<button class="slick-arrow next-arrow ico"></button>'
     };
-
-    if (items && items.length) {
-      if (items.length <= 8) {
-        sets.prevArrow = '<button class="slick-arrow prev-arrow ico"></button>';
-        sets.nextArrow = '<button class="slick-arrow next-arrow ico"></button>';
-      } else {
-        sets.arrows = false;
-      }
-    }
 
     $(slider).slick(sets);
   });
@@ -105,10 +115,11 @@ export const artBigSlider = container => {
   let sliders = findSliders(container, '.art-big-slider');
   if (!sliders) return;
   sliders.forEach(slider => {
+    let slides = dom.findAll('.slick-item', slider);
     $(slider).slick({
       slidesToShow: 1,
       slidesToScroll: 1,
-      arrows: true,
+      arrows: ifAddArrows(slides.length),
       fade: true,
       infinite: true,
       prevArrow: '<button class="slick-arrow prev-arrow"></button>',

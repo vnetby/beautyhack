@@ -7,16 +7,25 @@
 
         <div class="big-slider slick">
 
-          <div class="slick-item overlay-bottom">
-            <img class="object-cover" src="<?= URL; ?>img/big-slider/01.jpg" alt="slider item">
-            <div class="slick-content">
-              <a href="#" class="slick-title fs-lg">
-                Равшана Куркова: без чего ее
-                <br>
-                утро не будет добрым
-              </a>
+          <?php
+          for ($i = 0; $i < 30; $i++) {
+          ?>
+
+            <div class="slick-item overlay-bottom">
+              <img class="object-cover" src="<?= URL; ?>img/big-slider/01.jpg" alt="slider item">
+              <div class="slick-content">
+                <a href="#" class="slick-title fs-lg">
+                  Равшана Куркова: без чего ее
+                  <br>
+                  утро не будет добрым
+                </a>
+              </div>
             </div>
-          </div>
+
+          <?php
+          }
+          ?>
+
 
 
           <div class="slick-item overlay-bottom">
